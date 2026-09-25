@@ -1,727 +1,3825 @@
-html body{margin: 0; padding: 0; font-family: sans-serif;}/*RESTABLESCO LA PAGINA, SI MARGEN EN LOS BORDES*/
-
-
-#Fondo {background-image: url(IMG/Fondo_Espacio.gif) ; color: white; background-attachment: fixed; background-repeat: no-repeat;
-background-size: 100% 120%;
- }
-
-
-/*CONTENEDOR DE TODOS LOS CONTENEDORES*/
-
-
-.Contenedor_Supremo{width: auto; height: 100vh; overflow: hidden;} /*ESTE ES EL CONTENEDOR DONDE SE DESLIZAN TODOS LOS
-                                                                    CONTENEDOR*/
-
-/*PRIMERA SECCION------------------------------------------------------------------------------------------------------*/
-
-.Contenedor_RC {width: 7vw; height: 3vw; border-radius: 3rem; background: transparent; border: 3px solid white; position: relative;
-left: 44%; top: 4%; cursor: pointer;}
-.Recursos {width: 40%; height: 100%; border-radius: 50%; background: white; margin-left: 0%; transition: 1s;}
-
-
-
-/*PRIMERA SECCION------------------------------------------------------------------------------------------------------*/
-
-.Seccion_01{width: 100%; height: 100vh; overflow: hidden; position: relative; top: 0px; display: flex; flex-direction: column; align-items: center; justify-content: center;}/*ESTE ES EL CONTENEDOR DE
-                                                                                            LA SECCION 01*/
-
-.Texto_Principal { /*ESTE ES EL TITULO DE IRON FIST*/
-    font-family: 'Press Start 2P', cursive; text-align: center;
-    font-size: 3.8vw;
-    text-align: center;
-    position: relative;
-    top: -12%;
+html body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
 }
 
-.Nombre{ /*ESTE ES LA PREGUNTA DEBAJO DEL NOMBRE*/
-    font-family: 'Press Start 2P', cursive; text-align: center;
-    font-size: 5.9vw;
+
+/* =========================================================
+   FONDO GENERAL
+   ========================================================= */
+
+#Fondo {
+    background-image: url(IMG/Fondo_Espacio.gif);
+    color: white;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: 100% 120%;
+}
+
+
+/* =========================================================
+   CONTENEDOR GENERAL
+   ========================================================= */
+
+.Contenedor_Supremo {
+    width: auto;
+    height: 100vh;
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   =========================================================
+   PANTALLA PRINCIPAL - IRON FIST
+   DISEÑO FUTURISTA
+   SOLO SE MODIFICA ESTA SECCION
+   =========================================================
+   ========================================================= */
+
+.Seccion_01 {
+    width: 100%;
+    height: 100vh;
+    min-height: 600px;
+
+    position: relative;
+    top: 0;
+
+    overflow: hidden;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    background: #05030a;
+    color: white;
+}
+
+
+/* =========================================================
+   VIDEO DE FONDO
+   ========================================================= */
+
+#Seccion_01 .Video_Fondo_Principal {
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center center;
+
+    display: block;
+
+    z-index: 0;
+
+    filter:
+        brightness(0.48)
+        contrast(1.15)
+        saturate(1.25);
+
+    transform: scale(1.03);
+
+    animation:
+        MovimientoVideo 15s ease-in-out infinite alternate;
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   CAPA OSCURA SOBRE EL VIDEO
+   ========================================================= */
+
+#Seccion_01 .Capa_Fondo_Principal {
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 1;
+
+    pointer-events: none;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(150, 40, 255, 0.20),
+            transparent 40%
+        ),
+
+        linear-gradient(
+            90deg,
+            rgba(0, 0, 0, 0.80),
+            rgba(20, 5, 35, 0.30),
+            rgba(0, 0, 0, 0.80)
+        ),
+
+        linear-gradient(
+            0deg,
+            rgba(0, 0, 0, 0.75),
+            transparent 45%,
+            rgba(0, 0, 0, 0.35)
+        );
+}
+
+
+/* =========================================================
+   INTERRUPTOR / RECURSOS
+   ========================================================= */
+
+#Seccion_01 .Contenedor_RC {
+    position: absolute;
+
+    top: 35px;
+    right: 45px;
+    left: auto;
+
+    width: 65px;
+    height: 32px;
+
+    z-index: 20;
+
+    border: 1px solid rgba(255, 255, 255, 0.45);
+    border-radius: 30px;
+
+    background: rgba(15, 8, 25, 0.60);
+
+    backdrop-filter: blur(10px);
+
+    cursor: pointer;
+
+    transition:
+        transform 0.35s ease,
+        box-shadow 0.35s ease,
+        border-color 0.35s ease;
+}
+
+
+/* HOVER INTERRUPTOR */
+
+#Seccion_01 .Contenedor_RC:hover {
+    transform:
+        translateY(-4px)
+        scale(1.08);
+
+    border-color: rgb(210, 130, 255);
+
+    box-shadow:
+        0 0 10px rgba(255, 255, 255, 0.7),
+        0 0 25px rgba(190, 70, 255, 0.8),
+        0 0 45px rgba(120, 0, 255, 0.6);
+}
+
+
+/* =========================================================
+   CIRCULO DEL INTERRUPTOR
+   ========================================================= */
+
+#Seccion_01 .Recursos {
+    width: 25px;
+    height: 25px;
+
+    margin: 3px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle at 35% 35%,
+            white,
+            #c35cff 40%,
+            #7013b5 75%
+        );
+
+    box-shadow:
+        0 0 8px #d58aff,
+        0 0 20px #9d2cff;
+
+    transition:
+        transform 0.45s ease,
+        box-shadow 0.45s ease;
+}
+
+
+/* MOVIMIENTO DEL CIRCULO */
+
+#Seccion_01 .Contenedor_RC:hover .Recursos {
+    transform:
+        translateX(29px)
+        rotate(180deg);
+
+    box-shadow:
+        0 0 10px white,
+        0 0 20px #d06aff,
+        0 0 35px #8700ff;
+}
+
+
+/* =========================================================
+   TITULO IRON FIST
+   ========================================================= */
+
+#Seccion_01 .Nombre {
+    position: relative;
+
+    z-index: 5;
+
+    margin: 0;
+
+    font-family:
+        'Segoe UI',
+        Arial,
+        sans-serif;
+
+    font-size:
+        clamp(55px, 9vw, 130px);
+
+    font-weight: 900;
+
+    letter-spacing: 12px;
+
+    line-height: 0.9;
+
     text-align: center;
+
+    color: white;
+
+    text-transform: uppercase;
+
+    text-shadow:
+        0 2px 0 #64218e,
+        0 0 8px white,
+        0 0 25px rgba(180, 70, 255, 0.9),
+        0 0 55px rgba(130, 0, 255, 0.8),
+        0 0 100px rgba(100, 0, 255, 0.5);
+
+    animation:
+        Entrada_IronFist 1.2s ease forwards;
+
+    transition:
+        transform 0.4s ease,
+        letter-spacing 0.4s ease;
+}
+
+
+/* HOVER TITULO */
+
+#Seccion_01 .Nombre:hover {
+    transform: scale(1.04);
+
+    letter-spacing: 17px;
+
+    text-shadow:
+        0 0 10px white,
+        0 0 30px #d88cff,
+        0 0 65px #9c28ff,
+        0 0 120px #7000ff;
+}
+
+
+/* =========================================================
+   TEXTO PRINCIPAL
+   ========================================================= */
+
+#Seccion_01 .Texto_Principal {
+    position: relative;
+
+    z-index: 5;
+
+    margin-top: 35px;
+
+    font-family:
+        'Segoe UI',
+        Arial,
+        sans-serif;
+
+    font-size:
+        clamp(20px, 2.5vw, 34px);
+
+    font-weight: 300;
+
+    letter-spacing: 5px;
+
+    line-height: 1.5;
+
+    text-align: center;
+
+    color: white;
+
+    text-shadow:
+        0 0 8px rgba(255, 255, 255, 0.5),
+        0 0 20px rgba(160, 50, 255, 0.7);
+
+    transition:
+        transform 0.4s ease,
+        text-shadow 0.4s ease;
+}
+
+
+/* HOVER TEXTO */
+
+#Seccion_01 .Texto_Principal:hover {
+    transform: scale(1.03);
+
+    text-shadow:
+        0 0 10px white,
+        0 0 25px #c875ff,
+        0 0 45px #8b00ff;
+}
+
+
+/* =========================================================
+   BOTON JUGAR
+   ========================================================= */
+
+#Seccion_01 .Boton {
+    position: relative;
+
+    z-index: 5;
+
+    width: 250px;
+    height: 65px;
+
+    margin-top: 25px;
+
+    border:
+        1px solid rgba(225, 170, 255, 0.85);
+
+    border-radius: 8px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(140, 40, 205, 0.95),
+            rgba(55, 8, 95, 0.95)
+        );
+
+    color: white;
+
+    font-family:
+        'Segoe UI',
+        Arial,
+        sans-serif;
+
+    font-size: 18px;
+
+    font-weight: 800;
+
+    letter-spacing: 5px;
+
+    cursor: pointer;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 0 10px rgba(180, 70, 255, 0.7),
+        0 0 30px rgba(120, 0, 255, 0.5),
+        inset 0 0 20px rgba(255, 255, 255, 0.08);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        background 0.3s ease,
+        border-color 0.3s ease;
+}
+
+
+/* =========================================================
+   BRILLO DEL BOTON
+   ========================================================= */
+
+#Seccion_01 .Boton::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: -120%;
+
+    width: 70%;
+    height: 100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255, 255, 255, 0.5),
+            transparent
+        );
+
+    transform: skewX(-25deg);
+
+    transition: left 0.7s ease;
+
+    pointer-events: none;
+}
+
+
+/* BORDE INTERNO */
+
+#Seccion_01 .Boton::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 5px;
+
+    border:
+        1px solid rgba(255, 255, 255, 0.15);
+
+    border-radius: 5px;
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   HOVER BOTON
+   ========================================================= */
+
+#Seccion_01 .Boton:hover {
+    transform:
+        translateY(-7px)
+        scale(1.06);
+
+    border-color: white;
+
+    background:
+        linear-gradient(
+            135deg,
+            #bd55ff,
+            #6810a0
+        );
+
+    box-shadow:
+        0 0 15px white,
+        0 0 35px #c45cff,
+        0 0 70px #8500ff,
+        0 15px 35px rgba(0, 0, 0, 0.5);
+}
+
+
+/* ANIMACION DEL BRILLO */
+
+#Seccion_01 .Boton:hover::before {
+    left: 140%;
+}
+
+
+/* =========================================================
+   BOTON AL PRESIONAR
+   ========================================================= */
+
+#Seccion_01 .Boton:active {
+    transform:
+        translateY(-1px)
+        scale(0.96);
+
+    box-shadow:
+        0 0 10px white,
+        0 0 25px #b44cff;
+}
+
+
+/* =========================================================
+   ANIMACIONES PRINCIPALES
+   ========================================================= */
+
+@keyframes Entrada_IronFist {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(35px)
+            scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
+
+
+@keyframes MovimientoVideo {
+
+    from {
+        transform: scale(1.03);
+    }
+
+    to {
+        transform: scale(1.08);
+    }
+}
+
+
+
+/* =========================================================
+   IRON FIST
+   REGLAS - DISEÑO FUTURISTA DINÁMICO V4
+   ========================================================= */
+
+
+/* =========================================================
+   FUENTES
+   ========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@400;500;600;700&display=swap');
+
+
+/* =========================================================
+   VARIABLES
+   ========================================================= */
+
+:root {
+
+    --violeta: #01f080;
+    --violeta-claro: #60e936f3;
+
+    --azul: #7cf808;
+    --azul-electrico: #00d9ff;
+
+    --blanco: #ffffff;
+
+    --fondo-1: #03000a;
+    --fondo-2: #0c0220;
+    --fondo-3: #160532;
+
+    --texto: #e9ddff;
+
+    --borde: rgba(168, 85, 247, .55);
+
+}
+
+
+/* =========================================================
+   SECCIÓN PRINCIPAL
+   ========================================================= */
+
+#Reglas.reglas-section {
+
+    position: relative;
+
+    width: 100%;
+    min-height: 100vh;
+
+    box-sizing: border-box;
+
+    padding: 42px 5% 28px;
+
+    overflow: hidden;
+
+    color: var(--blanco);
+
+    background:
+
+        radial-gradient(
+            circle at 50% 40%,
+            rgba(126, 34, 206, .20),
+            transparent 35%
+        ),
+
+        radial-gradient(
+            circle at 15% 80%,
+            rgba(14, 165, 233, .10),
+            transparent 30%
+        ),
+
+        linear-gradient(
+            135deg,
+            var(--fondo-1),
+            var(--fondo-2),
+            var(--fondo-3),
+            var(--fondo-1)
+        );
+
+}
+
+
+/* =========================================================
+   FONDO ESPACIAL
+   ========================================================= */
+
+.reglas-fondo {
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+
+        linear-gradient(
+            rgba(3, 0, 10, .60),
+            rgba(7, 0, 18, .82)
+        ),
+
+        url("IMG/Fondo.jpg");
+
+    background-size: cover;
+
+    background-position: center;
+
+    opacity: .48;
+
+    z-index: 0;
+
+    animation:
+        fondoMovimiento 18s
+        ease-in-out
+        infinite
+        alternate;
+
+}
+
+
+@keyframes fondoMovimiento {
+
+    0% {
+
+        transform: scale(1);
+
+        background-position:
+            45% 50%;
+
+    }
+
+    100% {
+
+        transform: scale(1.06);
+
+        background-position:
+            55% 48%;
+
+    }
+
+}
+
+
+/* =========================================================
+   CUADRÍCULA FUTURISTA
+   ========================================================= */
+
+#Reglas.reglas-section::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background-image:
+
+        linear-gradient(
+            rgba(168, 85, 247, .035) 1px,
+            transparent 1px
+        ),
+
+        linear-gradient(
+            90deg,
+            rgba(168, 85, 247, .035) 1px,
+            transparent 1px
+        );
+
+    background-size: 45px 45px;
+
+    mask-image:
+
+        linear-gradient(
+            to bottom,
+            transparent,
+            black 20%,
+            black 80%,
+            transparent
+        );
+
+    pointer-events: none;
+
+    z-index: 1;
+
+}
+
+
+/* =========================================================
+   BRILLO CENTRAL
+   ========================================================= */
+
+#Reglas.reglas-section::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 750px;
+    height: 350px;
+
+    left: 50%;
+    top: 45%;
+
+    transform:
+        translate(-50%, -50%);
+
+    background:
+
+        radial-gradient(
+            ellipse,
+            rgba(139, 92, 246, .20),
+            transparent 70%
+        );
+
+    filter: blur(20px);
+
+    animation:
+        pulsoCentral 4s
+        ease-in-out
+        infinite;
+
+    pointer-events: none;
+
+    z-index: 1;
+
+}
+
+
+@keyframes pulsoCentral {
+
+    0%,
+    100% {
+
+        opacity: .5;
+
+        transform:
+            translate(-50%, -50%)
+            scale(.95);
+
+    }
+
+    50% {
+
+        opacity: 1;
+
+        transform:
+            translate(-50%, -50%)
+            scale(1.08);
+
+    }
+
+}
+
+
+/* =========================================================
+   ENCABEZADO
+   ========================================================= */
+
+.reglas-header {
+
+    position: relative;
+
+    z-index: 5;
+
+    text-align: center;
+
+    margin-bottom: 32px;
+
+}
+
+
+/* =========================================================
+   TÍTULO FUTURISTA
+   ========================================================= */
+
+.Titulo_Reglas {
+
+    position: relative;
+
+    display: inline-block;
+
+    margin: 0;
+
+    font-family:
+        'Orbitron',
+        sans-serif;
+
+    font-weight: 900;
+
+    font-size:
+        clamp(32px, 5vw, 58px);
+
+    line-height: 1;
+
+    letter-spacing: 7px;
+
+    text-transform: uppercase;
+
+    color: rgb(14, 45, 223);
+
+    text-shadow:
+
+        0 0 4px white,
+
+        0 0 10px var(--violeta-claro),
+
+        0 0 22px var(--violeta),
+
+        0 0 45px #7c3aed,
+
+        0 0 80px rgba(56,189,248,.5);
+
+    animation:
+        tituloFuturista
+        2.8s
+        ease-in-out
+        infinite;
+
+}
+
+
+/* LÍNEA DE ENERGÍA */
+
+.Titulo_Reglas::after {
+
+    content: "";
+
+    position: absolute;
+
+    left: 10%;
+
+    bottom: -14px;
+
+    width: 80%;
+
+    height: 2px;
+
+    background:
+
+        linear-gradient(
+            90deg,
+            transparent,
+            var(--azul-electrico),
+            white,
+            var(--violeta-claro),
+            transparent
+        );
+
+    box-shadow:
+
+        0 0 8px var(--azul-electrico),
+
+        0 0 18px var(--violeta);
+
+    animation:
+        lineaTitulo
+        2s
+        ease-in-out
+        infinite;
+
+}
+
+
+/* PULSO DEL TÍTULO */
+
+@keyframes tituloFuturista {
+
+    0%,
+    100% {
+
+        transform: scale(1);
+
+        filter: brightness(1);
+
+        text-shadow:
+
+            0 0 4px white,
+            0 0 10px var(--violeta-claro),
+            0 0 22px var(--violeta),
+            0 0 45px #7c3aed;
+
+    }
+
+    50% {
+
+        transform: scale(1.025);
+
+        filter: brightness(1.25);
+
+        text-shadow:
+
+            0 0 6px white,
+            0 0 14px white,
+            0 0 28px var(--violeta-claro),
+            0 0 55px var(--violeta),
+            0 0 90px var(--azul-electrico);
+
+    }
+
+}
+
+
+/* ANIMACIÓN LÍNEA */
+
+@keyframes lineaTitulo {
+
+    0%,
+    100% {
+
+        transform:
+            scaleX(.7);
+
+        opacity: .5;
+
+    }
+
+    50% {
+
+        transform:
+            scaleX(1);
+
+        opacity: 1;
+
+    }
+
+}
+
+
+/* =========================================================
+   SUBTÍTULO
+   ========================================================= */
+
+.Titulo_Reglas span {
+
+    display: block;
+
+    margin-top: 12px;
+
+    color: var(--violeta-claro);
+
+    font-size: .55em;
+
+    letter-spacing: 9px;
+
+    text-shadow:
+
+        0 0 5px var(--violeta-claro),
+
+        0 0 15px var(--violeta),
+
+        0 0 30px rgba(76, 206, 44, 0.8);
+
+    animation:
+        subtituloEnergia
+        2s
+        ease-in-out
+        infinite
+        alternate;
+
+}
+
+
+@keyframes subtituloEnergia {
+
+    from {
+
+        opacity: .65;
+
+        letter-spacing: 7px;
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        letter-spacing: 11px;
+
+    }
+
+}
+
+
+/* =========================================================
+   CONTENIDO
+   ========================================================= */
+
+.reglas-contenido {
+
+    position: relative;
+
+    z-index: 4;
+
+    width: 100%;
+
+    max-width: 1250px;
+
+    margin: 0 auto;
+
+    display: grid;
+
+    grid-template-columns:
+        1fr
+        1.1fr
+        1fr;
+
+    grid-template-rows:
+        auto
+        auto;
+
+    gap: 18px;
+
+    align-items: stretch;
+
+}
+
+
+/* =========================================================
+   TARJETAS
+   ========================================================= */
+
+.Reglas_estilos {
+
+    position: relative;
+
+    min-height: 285px;
+
+    padding: 24px;
+
+    box-sizing: border-box;
+
+    overflow: hidden;
+
+    border-radius: 18px;
+
+    border:
+        1px solid
+        rgba(247, 182, 85, 0.55);
+
+    background:
+
+        linear-gradient(
+            145deg,
+            rgba(128, 107, 248, 0.74),
+            rgba(0, 0, 0, 0.92)
+        );
+
+    backdrop-filter:
+        blur(12px);
+
+    box-shadow:
+
+        0 10px 30px
+        rgba(0,0,0,.35),
+
+        inset 0 0 25px
+        rgba(168,85,247,.05);
+
+    transition:
+
+        transform .35s ease,
+        border-color .35s ease,
+        box-shadow .35s ease;
+
+}
+
+
+/* =========================================================
+   LÍNEA SUPERIOR
+   ========================================================= */
+
+.Reglas_estilos::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+
+    left: -100%;
+
+    width: 100%;
+
+    height: 3px;
+
+    background:
+
+        linear-gradient(
+            90deg,
+            transparent,
+            var(--azul-electrico),
+            var(--violeta-claro),
+            transparent
+        );
+
+    box-shadow:
+        0 0 12px var(--azul-electrico);
+
+    animation:
+        lineaEnergia
+        3s
+        linear
+        infinite;
+
+}
+
+
+@keyframes lineaEnergia {
+
+    0% {
+        left: -100%;
+    }
+
+    100% {
+        left: 100%;
+    }
+
+}
+
+
+/* =========================================================
+   BORDE LATERAL
+   ========================================================= */
+
+.Reglas_estilos::after {
+
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+
+    top: 20%;
+
+    width: 2px;
+
+    height: 60%;
+
+    background:
+
+        linear-gradient(
+            transparent,
+            var(--violeta),
+            var(--azul),
+            transparent
+        );
+
+    box-shadow:
+        0 0 10px var(--violeta);
+
+}
+
+
+/* =========================================================
+   HOVER TARJETAS
+   ========================================================= */
+
+.Reglas_estilos:hover {
+
+    transform:
+        translateY(-7px)
+        scale(1.015);
+
+    border-color:
+        rgba(192,132,252,.95);
+
+    box-shadow:
+
+        0 15px 40px
+        rgba(0,0,0,.5),
+
+        0 0 25px
+        rgba(139,92,246,.35),
+
+        inset 0 0 30px
+        rgba(168,85,247,.08);
+
+}
+
+
+/* =========================================================
+   NÚMERO
+   ========================================================= */
+
+.regla-numero {
+
+    position: absolute;
+
+    top: 12px;
+
+    right: 18px;
+
+    font-family:
+        'Orbitron',
+        sans-serif;
+
+    font-size: 30px;
+
+    font-weight: 800;
+
+    color:
+        rgba(236, 233, 36, 0.952);
+
+    transition: .3s ease;
+
+}
+
+
+.Reglas_estilos:hover .regla-numero {
+
+    color:
+        rgba(192,132,252,.35);
+
+    text-shadow:
+        0 0 15px var(--violeta);
+
+}
+
+
+/* =========================================================
+   ICONOS
+   ========================================================= */
+
+.regla-icono {
+
+    width: 48px;
+
+    height: 48px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    margin-bottom: 13px;
+
+    border:
+        1px solid
+        var(--violeta);
+
+    border-radius: 12px;
+
+    background:
+
+        linear-gradient(
+            135deg,
+            rgba(139,92,246,.20),
+            rgba(14,165,233,.08)
+        );
+
+    color:
+        var(--violeta-claro);
+
+    font-size: 21px;
+
+    box-shadow:
+
+        0 0 12px
+        rgba(168,85,247,.35);
+
+    animation:
+        iconoFlotante
+        3s
+        ease-in-out
+        infinite;
+
+}
+
+
+@keyframes iconoFlotante {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-4px);
+    }
+
+}
+
+
+/* =========================================================
+   TÍTULO DE REGLA
+   ========================================================= */
+
+.Reglas_estilos h3 {
+
+    margin: 0;
+
+    font-family:
+        'Orbitron',
+        sans-serif;
+
+    font-size: 15px;
+
+    font-weight: 800;
+
+    letter-spacing: 2px;
+
+    color: white;
+
+    text-shadow:
+        0 0 8px var(--violeta);
+
+}
+
+
+/* =========================================================
+   LÍNEA
+   ========================================================= */
+
+.regla-linea {
+
+    display: block;
+
+    width: 65px;
+
+    height: 2px;
+
+    margin: 10px 0 14px;
+
+    background:
+
+        linear-gradient(
+            90deg,
+            var(--violeta),
+            var(--azul),
+            transparent
+        );
+
+    box-shadow:
+        0 0 8px var(--violeta);
+
+}
+
+
+/* =========================================================
+   TEXTO
+   ========================================================= */
+
+.Reglas_estilos p {
+
+    margin: 0;
+
+    font-family:
+        'Rajdhani',
+        sans-serif;
+
+    font-size: 16px;
+
+    font-weight: 500;
+
+    line-height: 1.55;
+
+    letter-spacing: .3px;
+
+    color:
+        var(--texto);
+
+}
+
+
+.Reglas_estilos strong {
+
+    color:
+        var(--azul-electrico);
+
+    font-weight: 700;
+
+    text-shadow:
+        0 0 8px
+        rgba(56,189,248,.7);
+
+}
+
+
+/* =========================================================
+   ETIQUETA
+   ========================================================= */
+
+.regla-etiqueta {
+
+    display: inline-block;
+
+    margin-top: 14px;
+
+    padding: 7px 12px;
+
+    border:
+        1px solid
+        rgba(56,189,248,.45);
+
+    border-radius: 5px;
+
+    background:
+        rgba(56,189,248,.06);
+
+    color:
+        #8be7ff;
+
+    font-family:
+        'Orbitron',
+        sans-serif;
+
+    font-size: 8px;
+
+    font-weight: 700;
+
+    letter-spacing: 1px;
+
+    box-shadow:
+
+        0 0 10px
+        rgba(56,189,248,.08);
+
+}
+
+
+/* =========================================================
+   IMAGEN CENTRAL
+   ========================================================= */
+
+.reglas-imagen-contenedor {
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    min-height: 285px;
+
+}
+
+
+/* MARCO */
+
+.imagen-marco {
+
+    position: relative;
+
+    width: 100%;
+
+    max-width: 430px;
+
+    padding: 7px;
+
+    border:
+        2px solid
+        var(--violeta);
+
+    border-radius: 14px;
+
+    background: #05000b;
+
+    box-shadow:
+
+        0 0 15px var(--violeta),
+
+        0 0 40px
+        rgba(124,58,237,.35);
+
+    overflow: hidden;
+
+    transition:
+
+        transform .4s ease,
+        box-shadow .4s ease;
+
+}
+
+
+/* ESCANEO */
+
+.imagen-marco::before {
+
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+
+    top: -20%;
+
+    width: 100%;
+
+    height: 3px;
+
+    background:
+
+        linear-gradient(
+            90deg,
+            transparent,
+            var(--azul-electrico),
+            white,
+            var(--violeta),
+            transparent
+        );
+
+    box-shadow:
+        0 0 12px var(--azul-electrico);
+
+    z-index: 5;
+
+    animation:
+        escaneoImagen
+        3s
+        linear
+        infinite;
+
+}
+
+
+@keyframes escaneoImagen {
+
+    0% {
+
+        top: -5%;
+
+        opacity: 0;
+
+    }
+
+    15% {
+
+        opacity: 1;
+
+    }
+
+    85% {
+
+        opacity: 1;
+
+    }
+
+    100% {
+
+        top: 105%;
+
+        opacity: 0;
+
+    }
+
+}
+
+
+/* HOVER IMAGEN */
+
+.imagen-marco:hover {
+
+    transform:
+        scale(1.035)
+        rotateX(1deg);
+
+    box-shadow:
+
+        0 0 20px var(--violeta),
+
+        0 0 50px
+        rgba(168,85,247,.55);
+
+}
+
+
+/* IMAGEN */
+
+.Img_reglas {
+
+    display: block;
+
+    width: 100%;
+
+    height: 265px;
+
+    object-fit: cover;
+
+    border-radius: 8px;
+
+    transition:
+
+        filter .4s ease,
+        transform .5s ease;
+
+}
+
+
+.imagen-marco:hover .Img_reglas {
+
+    filter:
+
+        brightness(1.1)
+        contrast(1.08)
+        saturate(1.15);
+
+    transform:
+        scale(1.02);
+
+}
+
+
+/* OVERLAY */
+
+.imagen-overlay {
+
+    position: absolute;
+
+    inset: 7px;
+
+    border-radius: 8px;
+
+    pointer-events: none;
+
+    background:
+
+        linear-gradient(
+            180deg,
+            rgba(168,85,247,.06),
+            transparent 45%,
+            rgba(0,0,0,.20)
+        );
+
+}
+
+
+/* BRILLO */
+
+.imagen-brillo {
+
+    position: absolute;
+
+    width: 70%;
+
+    height: 25px;
+
+    bottom: 0;
+
+    left: 15%;
+
+    background:
+
+        linear-gradient(
+            90deg,
+            var(--azul),
+            var(--violeta)
+        );
+
+    filter:
+        blur(25px);
+
+    opacity: .35;
+
+    z-index: -1;
+
+    animation:
+        brilloImagen
+        2.5s
+        ease-in-out
+        infinite
+        alternate;
+
+}
+
+
+@keyframes brilloImagen {
+
+    from {
+        opacity: .2;
+    }
+
+    to {
+        opacity: .5;
+    }
+
+}
+
+
+/* =========================================================
+   REGLA 03
+   ========================================================= */
+
+.regla-3 {
+
+    grid-column: 1 / 4;
+
+    min-height: 190px;
+
+    width: 72%;
+
+    margin: 0 auto;
+
+    padding: 24px 30px;
+
+}
+
+
+/* ICONO */
+
+.regla-3 .regla-icono {
+
+    position: absolute;
+
+    left: 28px;
+
+    top: 22px;
+
+    margin: 0;
+
+}
+
+
+/* TÍTULO */
+
+.regla-3 h3 {
+
+    margin-left: 65px;
+
+}
+
+
+/* LÍNEA */
+
+.regla-3 .regla-linea {
+
+    margin-left: 65px;
+
+}
+
+
+/* TEXTO */
+
+.regla-3 p {
+
+    max-width: 950px;
+
+    margin:
+        0 auto;
+
+    text-align: center;
+
+}
+
+
+/* ETIQUETA */
+
+.regla-3 .regla-etiqueta {
+
+    display: block;
+
+    width: max-content;
+
+    margin:
+        14px auto 0;
+
+}
+
+
+/* =========================================================
+   BOTÓN PRINCIPAL
+   ========================================================= */
+
+.reglas-accion {
+
+    position: relative;
+
+    z-index: 5;
+
+    text-align: center;
+
+    margin-top: 25px;
+
+}
+
+
+/* =========================================================
+   BOTÓN LISTO
+   ========================================================= */
+
+.Listo {
+
+    position: relative;
+
+    min-width: 300px;
+
+    padding: 15px 28px;
+
+    border:
+        1px solid
+        var(--violeta-claro);
+
+    border-radius: 9px;
+
+    background:
+
+        linear-gradient(
+            120deg,
+            #4c1d95,
+            #7c3aed,
+            #2563eb
+        );
+
+    background-size:
+        200% 200%;
+
+    color: white;
+
+    font-family:
+        'Orbitron',
+        sans-serif;
+
+    font-size: 12px;
+
+    font-weight: 800;
+
+    letter-spacing: 2px;
+
+    cursor: pointer;
+
+    overflow: hidden;
+
+    box-shadow:
+
+        0 0 12px
+        rgba(124,58,237,.7),
+
+        0 0 30px
+        rgba(56,189,248,.15);
+
+    animation:
+        botonGradiente
+        4s
+        ease
+        infinite;
+
+    transition:
+
+        transform .25s ease,
+        box-shadow .25s ease;
+
+}
+
+
+/* =========================================================
+   RÁFAGA DE LUZ
+   ========================================================= */
+
+.Listo::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: -50%;
+
+    left: -80%;
+
+    width: 45%;
+
+    height: 200%;
+
+    background:
+
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.9),
+            var(--azul-electrico),
+            transparent
+        );
+
+    transform:
+        skewX(-25deg);
+
+    opacity: 0;
+
+    filter:
+        blur(2px);
+
+}
+
+
+/* =========================================================
+   LÍNEAS DE ENERGÍA
+   ========================================================= */
+
+.Listo::after {
+
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+
+    left: -120%;
+
+    width: 120%;
+
+    height: 100%;
+
+    background:
+
+        repeating-linear-gradient(
+            -25deg,
+            transparent 0px,
+            transparent 8px,
+            rgba(125,211,252,.7) 9px,
+            transparent 11px
+        );
+
+    opacity: 0;
+
+}
+
+
+/* =========================================================
+   HOVER BOTÓN
+   ========================================================= */
+
+.Listo:hover {
+
+    transform:
+        translateY(-5px)
+        scale(1.05);
+
+    box-shadow:
+
+        0 0 15px #a855f7,
+
+        0 0 30px #7c3aed,
+
+        0 0 55px #38bdf8,
+
+        0 0 90px
+        rgba(56,189,248,.35);
+
+}
+
+
+/* RÁFAGA */
+
+.Listo:hover::before {
+
+    opacity: 1;
+
+    animation:
+        rafagaLateral
+        .65s
+        cubic-bezier(.2,.8,.2,1);
+
+}
+
+
+/* ENERGÍA */
+
+.Listo:hover::after {
+
+    opacity: 1;
+
+    animation:
+        energiaLateral
+        .55s
+        linear;
+
+}
+
+
+/* =========================================================
+   ANIMACIÓN RÁFAGA
+   ========================================================= */
+
+@keyframes rafagaLateral {
+
+    0% {
+
+        left: -80%;
+
+        opacity: 0;
+
+    }
+
+    15% {
+
+        opacity: 1;
+
+    }
+
+    100% {
+
+        left: 140%;
+
+        opacity: 0;
+
+    }
+
+}
+
+
+/* =========================================================
+   ANIMACIÓN ENERGÍA
+   ========================================================= */
+
+@keyframes energiaLateral {
+
+    0% {
+
+        left: -120%;
+
+    }
+
+    100% {
+
+        left: 120%;
+
+    }
+
+}
+
+
+/* =========================================================
+   GRADIENTE BOTÓN
+   ========================================================= */
+
+@keyframes botonGradiente {
+
+    0% {
+
+        background-position:
+            0% 50%;
+
+    }
+
+    50% {
+
+        background-position:
+            100% 50%;
+
+    }
+
+    100% {
+
+        background-position:
+            0% 50%;
+
+    }
+
+}
+
+
+/* =========================================================
+   CLICK
+   ========================================================= */
+
+.Listo:active {
+
+    transform:
+        scale(.94);
+
+    box-shadow:
+
+        0 0 25px
+        var(--violeta-claro),
+
+        0 0 60px
+        var(--azul-electrico);
+
+}
+
+
+/* =========================================================
+   ICONO DEL BOTÓN
+   ========================================================= */
+
+.boton-icono {
+
+    margin-right: 8px;
+
+    color:
+        #f8f8f8;
+
+    transition:
+        .3s ease;
+
+}
+
+
+.Listo:hover .boton-icono {
+
+    transform:
+        translateX(-3px)
+        scale(1.2);
+
+    text-shadow:
+
+        0 0 8px white,
+
+        0 0 18px
+        var(--violeta-claro);
+
+}
+
+
+/* =========================================================
+   FLECHA
+   ========================================================= */
+
+.boton-flecha {
+
+    margin-left: 12px;
+
+    color:
+        #7dd3fc;
+
+    transition:
+        .3s ease;
+
+}
+
+
+.Listo:hover .boton-flecha {
+
+    transform:
+        translateX(8px);
+
+    text-shadow:
+
+        0 0 8px
+        var(--azul-electrico),
+
+        0 0 18px
+        var(--azul-electrico);
+
+}
+
+
+/* =========================================================
+   DESCRIPCIÓN
+   ========================================================= */
+
+.accion-descripcion {
+
+    margin:
+        10px 0 0;
+
+    font-family:
+        'Rajdhani',
+        sans-serif;
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+    letter-spacing: 3px;
+
+    color:
+        rgba(226,232,240,.65);
+
+}
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.reglas-footer {
+
+    position: relative;
+
+    z-index: 5;
+
+    width: 100%;
+
+    max-width: 1250px;
+
+    margin:
+        22px auto 0;
+
+    padding-top: 12px;
+
+    border-top:
+        1px solid
+        rgba(168,85,247,.25);
+
+    display: flex;
+
+    justify-content:
+        space-between;
+
+    align-items: center;
+
+    color:
+        rgba(221,214,254,.45);
+
+    font-family:
+        'Orbitron',
+        sans-serif;
+
+    font-size: 8px;
+
+    font-weight: 600;
+
+    letter-spacing: 2px;
+
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 1100px) {
+
+    #Reglas.reglas-section {
+
+        padding:
+            38px 4% 25px;
+
+    }
+
+
+    .reglas-contenido {
+
+        grid-template-columns:
+            1fr 1fr;
+
+    }
+
+
+    .reglas-imagen-contenedor {
+
+        grid-column:
+            1 / 3;
+
+        grid-row:
+            1;
+
+    }
+
+
+    .regla-1 {
+
+        grid-column: 1;
+
+    }
+
+
+    .regla-2 {
+
+        grid-column: 2;
+
+    }
+
+
+    .regla-3 {
+
+        grid-column:
+            1 / 3;
+
+        width:
+            85%;
+
+    }
+
+}
+
+
+/* =========================================================
+   CELULAR
+   ========================================================= */
+
+@media (max-width: 650px) {
+
+    #Reglas.reglas-section {
+
+        min-height: auto;
+
+        padding:
+            45px 15px 25px;
+
+    }
+
+
+    .reglas-header {
+
+        margin-bottom: 28px;
+
+    }
+
+
+    .Titulo_Reglas {
+
+        font-size: 22px;
+
+        letter-spacing: 3px;
+
+    }
+
+
+    .Titulo_Reglas span {
+
+        font-size: .55em;
+
+        letter-spacing: 4px;
+
+    }
+
+
+    .reglas-contenido {
+
+        display: flex;
+
+        flex-direction: column;
+
+        gap: 15px;
+
+    }
+
+
+    .Reglas_estilos {
+
+        width: 100%;
+
+        min-height: auto;
+
+        padding:
+            22px 19px;
+
+    }
+
+
+    .reglas-imagen-contenedor {
+
+        min-height: auto;
+
+    }
+
+
+    .imagen-marco {
+
+        max-width: 100%;
+
+    }
+
+
+    .Img_reglas {
+
+        height: auto;
+
+        max-height: 260px;
+
+    }
+
+
+    .regla-3 {
+
+        width: 100%;
+
+        min-height: auto;
+
+        padding:
+            22px 19px;
+
+    }
+
+
+    .regla-3 .regla-icono {
+
+        position: static;
+
+        margin-bottom: 12px;
+
+    }
+
+
+    .regla-3 h3 {
+
+        margin-left: 0;
+
+    }
+
+
+    .regla-3 .regla-linea {
+
+        margin-left: 0;
+
+    }
+
+
+    .regla-3 p {
+
+        text-align: left;
+
+    }
+
+
+    .regla-3 .regla-etiqueta {
+
+        width: auto;
+
+        text-align: center;
+
+    }
+
+
+    .Listo {
+
+        width: 100%;
+
+        min-width: 0;
+
+        font-size: 10px;
+
+        padding:
+            14px 18px;
+
+    }
+
+
+    .reglas-footer {
+
+        flex-direction: column;
+
+        gap: 10px;
+
+        text-align: center;
+
+    }
+
+}
+
+
+/* =========================================================
+   REDUCCIÓN DE MOVIMIENTO
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+
+        animation-duration:
+            .01ms !important;
+
+        animation-iteration-count:
+            1 !important;
+
+        transition-duration:
+            .01ms !important;
+
+    }
+
+}
+/* =========================================================
+   SEGUNDA SECCION - HISTORIA
+   ========================================================= */
+
+#Seccion_2 {
+    position: relative;
+    top: 10%;
+}
+
+
+.Titulo_historia {
+    font-family: 'Press Start 2P', cursive;
+    text-align: left;
+    font-size: 40px;
+    position: absolute;
+    left: -100%;
+}
+
+
+.Imgane_metiorito {
+    position: absolute;
+    top: 210px;
+    left: -100%;
+    width: 600px;
+}
+
+
+.Contenedor_Historia {
+    width: 40%;
+    background: rgba(255, 255, 255, 0.659);
+    color: black;
+    padding-top: 2%;
+    padding-right: 2%;
+    padding-left: 2%;
+    padding-bottom: 2%;
+    float: right;
+    position: relative;
+    right: 100%;
+    top: 194px;
+}
+
+
+.Boton_preparado {
+    width: 70%;
+    height: 6vh;
+    background: black;
+    display: flex;
+    font-size: 1.2vw;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    color: white;
+    font-family: 'Inconsolata', monospace;
+}
+
+
+.Contenedor_narracion {
+    width: 9vh;
+    height: 9vh;
+    background: black;
+    color: white;
+    border-radius: 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    margin-left: 10%;
+}
+
+
+#VOLUMEN {
+    font-size: 90%;
+}
+
+
+#PAUSE {
+    display: none;
+}
+
+
+.BOTONES_2 {
+    display: flex;
+    align-items: center;
+    margin-top: 5%;
+    height: 9vh;
+    width: 50%;
+    overflow: hidden;
+    margin: auto;
+}
+
+
+/* =========================================================
+   TERCERA SECCION - JUEGO
+   ========================================================= */
+
+.Titulo-Jugar {
+    text-align: center;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 60px;
     position: relative;
     top: 0%;
-    padding-bottom: 0%;
-
+    left: -110%;
+    padding-bottom: 2%;
 }
 
-.Boton {width: 20vw; height: 4vw; background: rgb(144, 90, 196); /*Este es el boton de JUGAR*/
-cursor: pointer;font-family: 'Press Start 2P', cursive;
-color: white; border-radius: 2px; border: none;
-margin-left: auto; margin-right: auto; margin: auto; margin-top: -3%; }
 
-/*SECCION REGLAS ------------------------------------------------------------------------------------------------------*/
-
-
-
-#Reglas{position: relative; width: 100%; top: 120%;}
-
-.Titulo_Reglas{font-size: 2.4VW; position: relative; top: -20%; left: 2%; font-family: 'Press Start 2P', cursive;}
-
-.Img_reglas {margin-top: 1%; margin-left: 2%; width: 34%}
-
-.Reglas_estilos {background: rgba(248, 248, 248, 0.521); color: black; border: 0.19vw solid black; 
-width: 40%; height: auto; position: absolute;   left: 58% ; font-size: 1.14vw;}
-
-#R1 {top: -4%;}
-#R2 {top: 38%;}
-#R3_4 {top: 75%;}
-.Reglas_estilos h3  {margin-left: 3%; margin-right: 3%; text-align: center;} 
-.Reglas_estilos p  {margin-left: 3%; margin-right: 3%; text-align: center;} 
-
-.Listo {width: 34%; height: 8vh; background: rgb(100, 21, 146); display: flex; 
-align-items: center; justify-content: center; cursor: pointer; position: relative; left: 2%; top: 2vw; font-size: 1.5vw;
-font-family: 'Inconsolata', monospace;}
-
-
-
-/*SEGUNDA SECCION------------------------------------------------------------------------------------------------------*/
-
-#Seccion_2 {position: relative; top: 10%;}/*Este es el contenedor de laseccion 2*/
-
-.Titulo_historia{font-family: 'Press Start 2P', cursive; /*ESTE ES EL TITULO DE LA SEGUNDA SECCION*/
-text-align: left; font-size: 40px; position: absolute; 
-left: -100%;}
-
-.Imgane_metiorito{position: absolute; top: 210px; left: -100%; width:600px}/*ESTA ES LA IMAGEN DEL METIORITO CALLENDO A LA TIERRA*/
-
-.Contenedor_Historia{width: 40%;     /*ESTE ES EL CONENTENEDOR DE LA HISTORIA*/
-background: rgba(255, 255, 255, 0.659);
-color: black; padding-top: 2%; padding-right: 2%;
-padding-left: 2%; padding-bottom: 2%; float: right;
-position: relative; right: 100%; top: 194px;}
-
-.Boton_preparado{width: 70%; height: 6vh; /*ESTE ES EL BOTON DE LA HISTORIA*/
-background: black; display: flex; font-size: 1.2vw;
-justify-content: center; align-items: center;
-cursor: pointer; color: white; font-family: 'Inconsolata', monospace;
- }
-
-.Contenedor_narracion {width: 9vh; height: 9vh; background: black; color: white; border-radius: 0.5rem;
-display: flex; justify-content: center; align-items: center; cursor: pointer; margin-left: 10%;}
-#VOLUMEN{font-size: 90%; }
-#PAUSE {display: none;}
-.BOTONES_2 {display: flex; align-items: center;  margin-top: 5%; height: 9vh; width: 50%; overflow: hidden;
-margin: auto;}
-
-/*TERCERA SECCION------------------------------------------------------------------------------------------------------*/
-
-
-
-.Titulo-Jugar{text-align: center; /*TITULO DE LA ULTIMA SECCION*/
-font-family: 'Press Start 2P', cursive; text-align: center;
-font-size: 60px;position: relative; top: 0%; left: -110%; padding-bottom: 2%;}
-   
-
-.Tituloar_Juego_5 {font-family: 'Press Start 2P', cursive; text-align: center; font-size: 60px;}
-
-.Contenedor_Mensaje_Star{height: 60%; width: 100%; left: 0%;  background: transparent;
-position: absolute; top: 20%; overflow: hidden; transition: 2.3s;}
-
-/*FONDO DE LA SECCION PRINCIPAL*/
-.Seccion_Juego {width: 100%; height: 160vh; 
-    background-size: cover; display: flex;
-    align-items: center; justify-content: center;
-    flex-direction: column; position: absolute; top: -12%; left: -100%;  transition: 2s;       }
-    
-    /*ESTILOS DENTRO DEL CONTENEDOR DEL JUEGO*/
-    .Contenedor {width: 900px; height: 500px; 
-    border: 5px dashed purple; 
-    background: url(IMG/Fondo.jpg) no-repeat 50% 50%; 
-    background-size: cover; position: relative; top: 4%; overflow: hidden;  }
-
-    /*CABEZARA DENTRO DEL JUEGO*/
-    .Cabezera {height: 70px; 
-    border: 5px dashed purple; 
-    background: rgba(255, 255, 255, 0.363); 
-    border-bottom: none; display: flex; 
-    align-items: center; position: relative; }
-    
-    /*Pantalla start del inicio del juego*/
-    .Start {width: 100%; height: 100%; background: rgba(0, 0, 0, 0.582);
-    position: absolute; top: 0%; z-index: 100000000000; 
-    display: flex; align-items: center; 
-    justify-content: center; flex-direction: column; 
-    color: white; text-align: center;}
-    
-    /*Boton de la pantalla start*/
-    .Play {background: purple; color: white;
-    width: 18%; height: 15%; display: flex; 
-    align-items: center; left: 0px;
-    justify-content: center; cursor: pointer;
-    position: relative;  transition: 2s; top: 18%;
-    font-family: 'Press Start 2P', cursive; margin: auto;}
-
-
-    
-    /*TITULO CENTRAL DE START*/
-    .Texo {font-size: 36px;
-    left: 0px;  transition: 2s;
+.Tituloar_Juego_5 {
     font-family: 'Press Start 2P', cursive;
-    line-height: 70px; margin-top: 0% ;}
+    text-align: center;
+    font-size: 60px;
+}
 
-    .Pollo{font-family: 'Press Start 2P', cursive; margin-top: 0%;}
-    
-    #Contenedor_contador {height: 100%; 
-    display: table; position: absolute;}
-    
-    /*ESTILOS DE LOS NUMEROS DEL COTEO EN START*/
-    #RGB {font-size: 220px; position: relative; 
-    font-family: 'Press Start 2P', cursive;
-    display: table-cell; vertical-align: middle; }
-    
-    /*PANTALLA DE PAUSE*/
-    .Pausa_Pantalla {position: absolute; top: 0%; width: 100%;
-    height: 100%; background: rgba(0, 0, 0, 0.541);
-    text-align: center; z-index: 1000000000; display: none;}
 
-    .GANASTE_PANTALLA {position: absolute; width: 100%; height: 100%; background: rgba(47, 255, 57, 0.63);
-    z-index: 900; top: 0%; display: flex; justify-content: center; align-items: center; flex-direction: column; display: none;}
+.Contenedor_Mensaje_Star {
+    height: 60%;
+    width: 100%;
+    left: 0%;
+    background: transparent;
+    position: absolute;
+    top: 20%;
+    overflow: hidden;
+    transition: 2.3s;
+}
 
-    .GANASTE_PANTALLA h1 {font-family: 'Press Start 2P', cursive; color: rgb(10, 90, 16);
-    text-align: center; font-size: 2rem;}
 
-    .GANASTE_PANTALLA h3 {text-align: center; padding-left: 10%; padding-right: 10%; color: rgb(0, 0, 0);
-    font-family: 'Press Start 2P', cursive;}
-    
-    #Sin_Audio {display: none; font-size: 20px; color: white;}
+/* =========================================================
+   SECCION PRINCIPAL DEL JUEGO
+   ========================================================= */
 
-    #Ganaste_audio {font-size: 20px; color: white;}
-
-    /*ESTILOS GENERALES DE LOS METIORITOS*/
-    .Meteiorito {cursor: pointer; display: table; 
-    position: absolute; z-index: 1000; }
-    
-    /*ESTILOS INDIVIDUALES DE MIS DOS METIORITOS*/
-    #Meteiorito{position: absolute; top: 0px; left: -10%;  transition: 2.4s;}
-    #Meteiorito2{position: absolute; top: 0px; left: -10%; transition: 2.4s;}
-    
-    /*ESTILO DEL PLANETA*/
-    .Planeta {position: absolute; top: 12%; left: 80%;
-        animation-name: rotation;
-        animation-duration: 10s;
-        animation-iteration-count: infinite;
-        animation-timing-function: linear;
-    }
-    
-    @keyframes rotation {
-      0% {
-        transform:rotate(0deg);
-      }
-      100% {
-        transform:rotate(360deg);
-      }
-    }
-    
-    /*ESTILO DEL LIMITE EN EL JUEGO*/
-    .Limite {height: 100%; width: 50px;
-    border-left: 5px dashed white; 
-    position: absolute; top: 0%; left: 70%;}
-    
-    /*ESTILOS DEL SPAN Y DEL TEXTO DE TIEMPO*/
-    .Tiempo {display: flex; align-items: center;
+.Seccion_Juego {
+    width: 100%;
+    height: 160vh;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     flex-direction: column;
-    width: 14%; height: 70%; color: black; 
-    font-size: 13px; line-height: 1vh ;  }
-    
-    /*ESTILOS DEL SPAN Y DEL TEXTO DE PUNTAJE*/
-    .Puntaje {display: flex; align-items: center; 
-    flex-direction: column; 
-    width: 14%; height: 70%; color: black; 
-    font-size: 13px; line-height: 1vh;  }
-    
-    /*ESTILOS DEL BOTON DE PAUSE*/
-    .Pause {width: 20%; height: 70%; font-size: 14px;
-    background: purple; display: flex;
-    align-items: center; justify-content: center;
-    color: white; cursor: pointer; position: relative;
-    left: 50%; }
-    
-    /*MENSAJE DENTRO DE PAUSE*/
-    .Mensaje_Pause{font-size: 50px; color: white;
-     display: table-cell; vertical-align: middle;
-      font-family: 'Press Start 2P', cursive;}
-
-.NEXT {width: 15vw; height: 3vw; background: rgb(0, 132, 255); font-size: 0.9vw; display: flex; align-items: center; justify-content: center; cursor: pointer; float: right;
-margin-left: 12%; }
-
-.Contenedor_LVL{display: flex; justify-content: center; align-items: center; width: 100%; position: relative; top: 10%;}
-.Nada {width: 45vw; height: auto; background: rgba(191, 44, 228, 0.274); border: 2px solid purple; color: white; position: relative; left: 6%;  }
-.Nada h2 {padding-left: 3%; padding-right: 3%; font-size: 1.2vw;}
-.Nada p {padding-left: 3%; padding-right: 3%;}
-
-/*RELOJ*/
-.Fecha {display: flex; width: 280px; margin-bottom: 3%;
-    height: 50px; background: rgba(191, 44, 228, 0.274);
-    justify-content: center; align-items: center;
-    }
-    
-    .Fecha p {font-size: 23px; color: white; font-family: 'Inconsolata', monospace; }
-    
-    .Hora {
-        display: flex; width: 280px; height: 100px;
-        background: rgba(191, 44, 228, 0.274);
-        align-items: center; justify-content: center;
-    }
-    
-    .Hora p {font-size: 50px; color: white; font-family: 'Inconsolata', monospace; }
-    
-    
-    #Caja_ULT {height: 100%; width: 20%; display: flex;
-    justify-content: center; align-items: center; flex-direction: column; 
-      }
-    
-    #Segundos{font-size: 40px; color: white; font-family: 'Inconsolata', monospace; }
-    
-    #AMPM {font-size: 25px; color: white; font-family: 'Inconsolata', monospace;  }
-    
-    .Contenedor_Reloj { left: 5%; 
-    }
-/*BLOQUEO DE NIVELES*/
-#NIVEL_01 {display: block;}
-#NIVEL_02 {display: none;}
-#NIVEL3 {display: none;}
-
-
-
-/*RESPONSIVE */
-@media (max-width: 1196px){
-    .Imgane_metiorito{width: 47%; top: 16vw;}
-    .Boton_preparado{width: 38%;}
-    .Titulo-Jugar {font-size: 50px;}
-    .Contenedor_Historia{top: 15vw; font-size: 1.3vw;}
-    
+    position: absolute;
+    top: -12%;
+    left: -100%;
+    transition: 2s;
 }
 
 
-/*LVL 2 ---------------------------------------------------------------------------------------------------------*/
+/* =========================================================
+   CONTENEDOR DEL JUEGO - NIVEL 1
+   ========================================================= */
 
-
-    
-    /*ESTILOS DENTRO DEL CONTENEDOR DEL JUEGO*/
-    .Contenedorlvl2 {width: 900px; height: 500px; 
-    border: 5px dashed rgb(46, 86, 218); 
+.Contenedor {
+    width: 900px;
+    height: 500px;
+    border: 5px dashed purple;
     background: url(IMG/Fondo.jpg) no-repeat 50% 50%;
-    background-size: cover; position: relative; top: 4%; overflow: hidden;}
-    
-    /*Pantalla start del inicio del juego*/
-    .Startlvl2 {width: 100%; height: 100%; background: rgba(0, 0, 0, 0.582);
-    position: absolute; top: 0%; z-index: 100000000000; 
-    display: flex; align-items: center; 
-    justify-content: center; flex-direction: column; 
-    color: white; text-align: center;}
-    
-    /*Boton de la pantalla start*/
-    .Playlvl2 {background: rgb(0, 119, 255); color: white;
-    width: 18%; height: 9%; display: flex; 
-    align-items: center; left: 0px;
-    justify-content: center; cursor: pointer;
-    position: relative; transition: 2s; margin-top: -2%;
-    font-family: 'Press Start 2P', cursive;}
-    
-    /*TITULO CENTRAL DE START*/
-    .Texolvl2 {font-size: 36px; position: relative;
-        left: 0px; top: -15%; transition: 2s;
-        font-family: 'Press Start 2P', cursive;
-        line-height: 70px;}
+    background-size: cover;
+    position: relative;
+    top: 4%;
+    overflow: hidden;
+}
 
-    #Dificultad {display: flex; 
-    justify-content: center; width: 100%;
-    position: absolute; top: 45%; left: 0px; transition: 2s;}
-    
-    #Contenedor_contadorlvl2 {height: 100%; 
-    display: table; position: absolute;}
-    
-    /*ESTILOS DE LOS NUMEROS DEL COTEO EN START*/
-    #RGBlvl2 {font-size: 220px; position: relative; 
+
+/* =========================================================
+   CABECERA NIVEL 1
+   ========================================================= */
+
+.Cabezera {
+    height: 70px;
+    border: 5px dashed purple;
+    background: rgba(255, 255, 255, 0.363);
+    border-bottom: none;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+
+/* =========================================================
+   PANTALLA START NIVEL 1
+   ========================================================= */
+
+.Start {
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.582);
+    position: absolute;
+    top: 0%;
+    z-index: 100000000000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color: white;
+    text-align: center;
+}
+
+
+/* BOTON START */
+
+.Play {
+    background: purple;
+    color: white;
+    width: 18%;
+    height: 15%;
+    display: flex;
+    align-items: center;
+    left: 0px;
+    justify-content: center;
+    cursor: pointer;
+    position: relative;
+    transition: 2s;
+    top: 18%;
     font-family: 'Press Start 2P', cursive;
-    display: table-cell; vertical-align: middle; }
-    
-    /*PANTALLA DE PAUSE*/
-    .Pausa_Pantallalvl2 {position: absolute; top: 0%; width: 100%;
-    height: 100%; background: rgba(0, 0, 0, 0.541);
-    text-align: center; z-index: 1000000000; display: none;}
-    
-    .GanastePantallaLvL2 {position: absolute; width: 100%; height: 100%; background: rgba(47, 255, 57, 0.63);
-        z-index: 900; top: 0%; display: flex; justify-content: center; align-items: center; flex-direction: column; display: none;}
-    
-    .GanastePantallaLvL2 h1 {font-family: 'Press Start 2P', cursive; color: rgb(10, 90, 16);
-        text-align: center; font-size: 2rem;}
-    
-    .GanastePantallaLvL2 h3 {text-align: center; padding-left: 10%; padding-right: 10%; color: rgb(0, 0, 0);
-        font-family: 'Press Start 2P', cursive;}
+    margin: auto;
+}
 
 
-    /*ESTILOS GENERALES DE LOS METIORITOS*/
-    .Meteioritolvl2 {cursor: pointer; display: table; 
-    position: absolute; z-index: 1000; }
-    
-    /*ESTILOS INDIVIDUALES DE MIS DOS METIORITOS*/
-    #Meteioritolvl2{top: 0%; position: absolute; left: -30%; transition: 2s;}
-    #Meteiorito2lvl2{ top: 0%; position: absolute; left: -30%; transition: 2s;}
-    #Meteiorito3lvl2{top: 0%; position: absolute; left: -30%; transition: 2s;}
-    /*ESTILO DEL PLANETA*/
-    .Planetalvl2 {position: absolute; top: 12%; left: 80%;
-        animation-name: rotation;
-        animation-duration: 10s;
-        animation-iteration-count: infinite;
-        animation-timing-function: linear;
-    }
-    
-    @keyframes rotation {
-      0% {
-        transform:rotate(0deg);
-      }
-      100% {
-        transform:rotate(360deg);
-      }
-    }
-    
-    /*ESTILO DEL LIMITE EN EL JUEGO*/
-    .Limitelvl2 {height: 100%; width: 50px;
-    border-left: 5px dashed white; 
-    position: absolute; top: 0%; left: 70%;}
-    
-    /*CABEZARA DENTRO DEL JUEGO*/
-    .Cabezeralvl2 {height: 70px; 
-    border: 5px dashed rgb(0, 119, 255); 
-    background: rgba(255, 255, 255, 0.363); 
-    border-bottom: none; display: flex; 
-    align-items: center; position: relative; }
-    
-    /*ESTILOS DEL SPAN Y DEL TEXTO DE TIEMPO*/
-    .Tiempolvl2 {display: flex; align-items: center;
-        flex-direction: column;
-        width: 14%; height: 70%; color: black; 
-        font-size: 13px; line-height: 1vh ;   }
-    
-    /*ESTILOS DEL SPAN Y DEL TEXTO DE PUNTAJE*/
-    .Puntajelvl2 {display: flex; align-items: center; 
-     flex-direction: column; margin-top: 2%;
-    width: 14%; height: 100%; color: black; 
-    font-size: 13px; line-height: 7px;}
-    
-    /*ESTILOS DEL BOTON DE PAUSE*/
-    .Pauselvl2 {width: 20%; height: 70%; font-size: 14px;
-    background: rgb(0, 119, 255);; display: flex;
-    align-items: center; justify-content: center;
-    color: white; cursor: pointer; position: relative;
-    left: 50%; }
-    
-    /*MENSAJE DENTRO DE PAUSE*/
-    .Mensaje_Pauselvl2{font-size: 50px; color: white; display: table-cell; vertical-align: middle; font-family: 'Press Start 2P', cursive;}
-    
-    /*Alerta*/
-    .Perdistelvl2 {
-     color:aqua;
-     
-    }
-    .Aumentarpuntoslvl2 {
-     color: black;
-    
-    
-    }
-    
-    /*TERCER NIVEL ----------------------------------------------------------------------------------------*/
+/* TITULO START */
+
+.Texo {
+    font-size: 36px;
+    left: 0px;
+    transition: 2s;
+    font-family: 'Press Start 2P', cursive;
+    line-height: 70px;
+    margin-top: 0%;
+}
 
 
-    
-    /*ESTILOS DENTRO DEL CONTENEDOR DEL JUEGO*/
-    .Contenedorlvl3 {
-        width: 900px;
-        height: 500px; 
-        border: 5px dashed red; 
-        background: url(IMG/Fondo.jpg) no-repeat 50% 50% ;
-        background-size: cover;
-        position: relative;
-        top: 4%;
-        overflow: hidden;
-    }
-    
-    /*Pantalla start del inicio del juego*/
-    .Startlvl3 {
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.582);
-        position: absolute;
-        top: 0%;
-        z-index: 100000000000; 
-        display: flex;
-        align-items: center; 
-        justify-content: center;
-        flex-direction: column; 
-        color: white;
-        text-align: center;
-    }
-    
-    /*Boton de la pantalla start*/
-    .Playlvl3 {
-        background: red;
-        color: white;
-        width: 18%;
-        height: 9%;
-        display: flex; 
-        align-items: center;
-        left: 0;
-        justify-content: center;
-        cursor: pointer;
-        position: relative;
-        transition: 2s;
-        font-family: 'Press Start 2P', cursive;
-    }
-    
-    #Dificultadlvl3{display: flex;
-    justify-content: center; width: 100%;
-    top: 49%; position: absolute; left: 0%; transition: 5s;}
+.Pollo {
+    font-family: 'Press Start 2P', cursive;
+    margin-top: 0%;
+}
 
-    /*TITULO CENTRAL DE START*/
-    .Textolvl3 {
-        font-size: 36px;
-        position: relative;
-        left: 0px; 
-        top: -7%;
-        transition: 2s;
-        font-family: 'Press Start 2P', cursive;
-        line-height: 70px;
+
+#Contenedor_contador {
+    height: 100%;
+    display: table;
+    position: absolute;
+}
+
+
+/* NUMEROS DEL CONTADOR */
+
+#RGB {
+    font-size: 220px;
+    position: relative;
+    font-family: 'Press Start 2P', cursive;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+
+/* =========================================================
+   PAUSA NIVEL 1
+   ========================================================= */
+
+.Pausa_Pantalla {
+    position: absolute;
+    top: 0%;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.541);
+    text-align: center;
+    z-index: 1000000000;
+    display: none;
+}
+
+
+/* =========================================================
+   PANTALLA GANASTE NIVEL 1
+   ========================================================= */
+
+.GANASTE_PANTALLA {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(47, 255, 57, 0.63);
+    z-index: 900;
+    top: 0%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    display: none;
+}
+
+
+.GANASTE_PANTALLA h1 {
+    font-family: 'Press Start 2P', cursive;
+    color: rgb(10, 90, 16);
+    text-align: center;
+    font-size: 2rem;
+}
+
+
+.GANASTE_PANTALLA h3 {
+    text-align: center;
+    padding-left: 10%;
+    padding-right: 10%;
+    color: rgb(0, 0, 0);
+    font-family: 'Press Start 2P', cursive;
+}
+
+
+#Sin_Audio {
+    display: none;
+    font-size: 20px;
+    color: white;
+}
+
+
+#Ganaste_audio {
+    font-size: 20px;
+    color: white;
+}
+
+
+/* =========================================================
+   METEORITOS NIVEL 1
+   ========================================================= */
+
+.Meteiorito {
+    cursor: pointer;
+    display: table;
+    position: absolute;
+    z-index: 1000;
+}
+
+
+#Meteiorito {
+    position: absolute;
+    top: 0px;
+    left: -10%;
+    transition: 2.4s;
+}
+
+
+#Meteiorito2 {
+    position: absolute;
+    top: 0px;
+    left: -10%;
+    transition: 2.4s;
+}
+
+
+/* =========================================================
+   PLANETA NIVEL 1
+   ========================================================= */
+
+.Planeta {
+    position: absolute;
+    top: 12%;
+    left: 80%;
+    animation-name: rotation;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+
+/* ANIMACION DEL PLANETA */
+
+@keyframes rotation {
+
+    0% {
+        transform: rotate(0deg);
     }
-    
-    #Contenedor_contadorlvl3 {
-        height: 100%; 
-        display: table;
-        position: absolute;
+
+    100% {
+        transform: rotate(360deg);
     }
-    
-    /*ESTILOS DE LOS NUMEROS DEL COTEO EN START*/
-    #RGBlvl3 {
-        font-size: 220px;
-        position: relative; 
-        font-family: 'Press Start 2P', cursive;
-        display: table-cell;
-        vertical-align: middle;
+}
+
+
+/* =========================================================
+   LIMITE DEL JUEGO
+   ========================================================= */
+
+.Limite {
+    height: 100%;
+    width: 50px;
+    border-left: 5px dashed white;
+    position: absolute;
+    top: 0%;
+    left: 70%;
+}
+
+
+/* =========================================================
+   TIEMPO
+   ========================================================= */
+
+.Tiempo {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 14%;
+    height: 70%;
+    color: black;
+    font-size: 13px;
+    line-height: 1vh;
+}
+
+
+/* =========================================================
+   PUNTAJE
+   ========================================================= */
+
+.Puntaje {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 14%;
+    height: 70%;
+    color: black;
+    font-size: 13px;
+    line-height: 1vh;
+}
+
+
+/* =========================================================
+   BOTON PAUSA
+   ========================================================= */
+
+.Pause {
+    width: 20%;
+    height: 70%;
+    font-size: 14px;
+    background: purple;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    cursor: pointer;
+    position: relative;
+    left: 50%;
+}
+
+
+/* MENSAJE PAUSA */
+
+.Mensaje_Pause {
+    font-size: 50px;
+    color: white;
+    display: table-cell;
+    vertical-align: middle;
+    font-family: 'Press Start 2P', cursive;
+}
+
+
+/* =========================================================
+   SIGUIENTE NIVEL
+   ========================================================= */
+
+.NEXT {
+    width: 15vw;
+    height: 3vw;
+    background: rgb(0, 132, 255);
+    font-size: 0.9vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    float: right;
+    margin-left: 12%;
+}
+
+
+.Contenedor_LVL {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    position: relative;
+    top: 10%;
+}
+
+
+.Nada {
+    width: 45vw;
+    height: auto;
+    background: rgba(191, 44, 228, 0.274);
+    border: 2px solid purple;
+    color: white;
+    position: relative;
+    left: 6%;
+}
+
+
+.Nada h2 {
+    padding-left: 3%;
+    padding-right: 3%;
+    font-size: 1.2vw;
+}
+
+
+.Nada p {
+    padding-left: 3%;
+    padding-right: 3%;
+}
+
+
+/* =========================================================
+   RELOJ
+   ========================================================= */
+
+.Fecha {
+    display: flex;
+    width: 280px;
+    margin-bottom: 3%;
+    height: 50px;
+    background: rgba(191, 44, 228, 0.274);
+    justify-content: center;
+    align-items: center;
+}
+
+
+.Fecha p {
+    font-size: 23px;
+    color: white;
+    font-family: 'Inconsolata', monospace;
+}
+
+
+.Hora {
+    display: flex;
+    width: 280px;
+    height: 100px;
+    background: rgba(191, 44, 228, 0.274);
+    align-items: center;
+    justify-content: center;
+}
+
+
+.Hora p {
+    font-size: 50px;
+    color: white;
+    font-family: 'Inconsolata', monospace;
+}
+
+
+#Caja_ULT {
+    height: 100%;
+    width: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+
+#Segundos {
+    font-size: 40px;
+    color: white;
+    font-family: 'Inconsolata', monospace;
+}
+
+
+#AMPM {
+    font-size: 25px;
+    color: white;
+    font-family: 'Inconsolata', monospace;
+}
+
+
+.Contenedor_Reloj {
+    left: 5%;
+}
+
+
+/* =========================================================
+   BLOQUEO DE NIVELES
+   ========================================================= */
+
+#NIVEL_01 {
+    display: block;
+}
+
+
+#NIVEL_02 {
+    display: none;
+}
+
+
+#NIVEL3 {
+    display: none;
+}
+
+
+/* =========================================================
+   RESPONSIVE GENERAL
+   ========================================================= */
+
+@media (max-width: 1196px) {
+
+    .Imgane_metiorito {
+        width: 47%;
+        top: 16vw;
     }
-    
-    /*PANTALLA DE PAUSE*/
-    .Pausa_Pantallalvl3 {
-        position: absolute;
-        top: 0%;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.541);
-        text-align: center;
-        z-index: 1000000000;
-        display: none;
+
+    .Boton_preparado {
+        width: 38%;
     }
-    
-    /*ESTILOS GENERALES DE LOS METIORITOS*/
-    .Meteoritolvl3 {
-        cursor: pointer;
-        display: table; 
-        position: absolute;
-        top: 0%;
-        z-index: 1000;
-    }
-    
-    /*ESTILOS INDIVIDUALES DE MIS TRES METIORITOS*/
-    #Meteoritolvl3{
-        top: 0%;
-        left: -10%;
-        transition: 1s;
-    }
-    
-    #Meteorito2lvl3{
-        top: 0%;
-        position: absolute;
-        left: -10%;
-        transition: 2s;
-    }
-    
-    #Meteorito3lvl3{
-        top: 0%;
-        position: absolute;
-        left: -10%;
-        transition: 3s;
-    }
-    
-    #Meteorito4lvl3{
-        top: 0%;
-        position: absolute;
-        left: -10%;
-        transition: 4s;
-    }
-    
-    
-    /*ESTILO DEL PLANETA*/
-    .Planetalvl3{
-        position: absolute;
-        top: 12%;
-        left: 80%;
-        animation-name: rotation;
-        animation-duration: 10s;
-        animation-iteration-count: infinite;
-        animation-timing-function: linear;
-    }
-    
-    @keyframes rotation {
-      0% {
-        transform:rotate(0deg);
-      }
-      100% {
-        transform:rotate(360deg);
-      }
-    }
-    
-    
-    /*ESTILO DEL LIMITE EN EL JUEGO*/
-    .Limitelvl3 {
-        height: 100%;
-        width: 50px;
-        border-left: 5px dotted white; 
-        position: absolute;
-        top: 0%;
-        left: 70%;
-    }
-    
-    /*CABEZARA DENTRO DEL JUEGO*/
-    .Cabezeralvl3 {height: 70px; 
-        border: 5px dashed red; 
-        background: rgba(255, 255, 255, 0.363); 
-        border-bottom: none; display: flex; 
-        position: relative; }
-    
-    /*ESTILOS DEL SPAN Y DEL TEXTO DE TIEMPO*/
-    .Tiempolvl3 {
-        display: flex; align-items: center; justify-content: center;
-        flex-direction: column;
-        width: 14%; height: 86%; color: black; 
-        font-size: 13px; line-height: 1vh ;
-    }
-    
-    /*ESTILOS DEL SPAN Y DEL TEXTO DE PUNTAJE*/
-    .Puntajelvl3 {
-        display: flex;
-        align-items: center; 
-        justify-content: center;
-        flex-direction: column; 
-        width: 14%;
-        height: 86%;
-        color: black;
-        font-size: 13px;
-        line-height: 1vh;
-    }
-    
-    /*ESTILOS DE LA SORPRESA*/
-    .Pantalla_navelvl3 {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-        position: absolute;
-        left: -100%;
-        top: 0;
-    }
-    
-    .Pantalla_Nodrizalvl3 {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-        position: absolute;
-        left: -100%;
-        top: 32%;
-    }
-    
-    .Pantalla_nave2lvl3 {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-        position: absolute;
-        left: -100%;
-        top: 63%;
-    }
-    
-    .Ovnislvl3 {
-        width: 84px;
-        transform: rotate(90deg);
-    }
-    
-    #Nodrizalvl3 {
-        width: 140px;
-        transform: rotate(90deg);
-    }
-    
-    
-    
-    #Pantalla_creditoslvl3 {
-        position: absolute;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        background: transparent;
-        transition: 2s;
-    }
-    
-    #Creditoslvl3 {
-        height: 100%;
-        width: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-        position: absolute;
-        top: -100%;
-        font-size: 26px;
-        color: snow;
-        line-height: 8px;
-    }
-    
-    #Proximolvl3 {
-        height: 100%;
-        width: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-        position: absolute;
-        bottom: -100%;
-        font-size: 30px;
-        color: snow;
-        line-height: 5px;
-        line-height: 8px;
-    }
-    
-    #Proximolvl3 h4 {
-        font-family: 'Press Start 2P', cursive;
-        line-height: 5px;
-    }
-    
-    #Creditoslvl3 h3 {
-        font-family: 'Press Start 2P', cursive;
-    }
-    
-    #Creditoslvl3 p {
-        font-family: 'Press Start 2P', cursive;
-    }
-    
-    /*ESTILOS DEL BOTON DE PAUSE*/
-    .Pauselvl3{
-        width: 20%;
-        height: 70%;
-        font-size: 14px;
-        background: red;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: white;
-        cursor: pointer;
-        position: relative;
-        top: 15%;
-        left: 50%;
-    }
-    
-    /*MENSAJE DENTRO DE PAUSE*/
-    .Mensaje_Pauselvl3{
+
+    .Titulo-Jugar {
         font-size: 50px;
-        color: white;
-        display: table-cell;
-        vertical-align: middle;
-        font-family: 'Press Start 2P', cursive;
     }
+
+    .Contenedor_Historia {
+        top: 15vw;
+        font-size: 1.3vw;
+    }
+}
+
+
+/* =========================================================
+   NIVEL 2
+   ========================================================= */
+
+.Contenedorlvl2 {
+    width: 900px;
+    height: 500px;
+    border: 5px dashed rgb(46, 86, 218);
+    background: url(IMG/Fondo.jpg) no-repeat 50% 50%;
+    background-size: cover;
+    position: relative;
+    top: 4%;
+    overflow: hidden;
+}
+
+
+/* PANTALLA START NIVEL 2 */
+
+.Startlvl2 {
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.582);
+    position: absolute;
+    top: 0%;
+    z-index: 100000000000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color: white;
+    text-align: center;
+}
+
+
+/* BOTON NIVEL 2 */
+
+.Playlvl2 {
+    background: rgb(0, 119, 255);
+    color: white;
+    width: 18%;
+    height: 9%;
+    display: flex;
+    align-items: center;
+    left: 0px;
+    justify-content: center;
+    cursor: pointer;
+    position: relative;
+    transition: 2s;
+    margin-top: -2%;
+    font-family: 'Press Start 2P', cursive;
+}
+
+
+/* TITULO NIVEL 2 */
+
+.Texolvl2 {
+    font-size: 36px;
+    position: relative;
+    left: 0px;
+    top: -15%;
+    transition: 2s;
+    font-family: 'Press Start 2P', cursive;
+    line-height: 70px;
+}
+
+
+#Dificultad {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    position: absolute;
+    top: 45%;
+    left: 0px;
+    transition: 2s;
+}
+
+
+#Contenedor_contadorlvl2 {
+    height: 100%;
+    display: table;
+    position: absolute;
+}
+
+
+/* CONTADOR NIVEL 2 */
+
+#RGBlvl2 {
+    font-size: 220px;
+    position: relative;
+    font-family: 'Press Start 2P', cursive;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+
+/* PAUSA NIVEL 2 */
+
+.Pausa_Pantallalvl2 {
+    position: absolute;
+    top: 0%;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.541);
+    text-align: center;
+    z-index: 1000000000;
+    display: none;
+}
+
+
+/* GANASTE NIVEL 2 */
+
+.GanastePantallaLvL2 {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(47, 255, 57, 0.63);
+    z-index: 900;
+    top: 0%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    display: none;
+}
+
+
+.GanastePantallaLvL2 h1 {
+    font-family: 'Press Start 2P', cursive;
+    color: rgb(10, 90, 16);
+    text-align: center;
+    font-size: 2rem;
+}
+
+
+.GanastePantallaLvL2 h3 {
+    text-align: center;
+    padding-left: 10%;
+    padding-right: 10%;
+    color: rgb(0, 0, 0);
+    font-family: 'Press Start 2P', cursive;
+}
+
+
+/* METEORITOS NIVEL 2 */
+
+.Meteioritolvl2 {
+    cursor: pointer;
+    display: table;
+    position: absolute;
+    z-index: 1000;
+}
+
+
+#Meteioritolvl2 {
+    top: 0%;
+    position: absolute;
+    left: -30%;
+    transition: 2s;
+}
+
+
+#Meteiorito2lvl2 {
+    top: 0%;
+    position: absolute;
+    left: -30%;
+    transition: 2s;
+}
+
+
+#Meteiorito3lvl2 {
+    top: 0%;
+    position: absolute;
+    left: -30%;
+    transition: 2s;
+}
+
+
+/* PLANETA NIVEL 2 */
+
+.Planetalvl2 {
+    position: absolute;
+    top: 12%;
+    left: 80%;
+    animation-name: rotation;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+
+/* LIMITE NIVEL 2 */
+
+.Limitelvl2 {
+    height: 100%;
+    width: 50px;
+    border-left: 5px dashed white;
+    position: absolute;
+    top: 0%;
+    left: 70%;
+}
+
+
+/* CABECERA NIVEL 2 */
+
+.Cabezeralvl2 {
+    height: 70px;
+    border: 5px dashed rgb(0, 119, 255);
+    background: rgba(255, 255, 255, 0.363);
+    border-bottom: none;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+
+/* TIEMPO NIVEL 2 */
+
+.Tiempolvl2 {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 14%;
+    height: 70%;
+    color: black;
+    font-size: 13px;
+    line-height: 1vh;
+}
+
+
+/* PUNTAJE NIVEL 2 */
+
+.Puntajelvl2 {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 2%;
+    width: 14%;
+    height: 100%;
+    color: black;
+    font-size: 13px;
+    line-height: 7px;
+}
+
+
+/* PAUSA NIVEL 2 */
+
+.Pauselvl2 {
+    width: 20%;
+    height: 70%;
+    font-size: 14px;
+    background: rgb(0, 119, 255);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    cursor: pointer;
+    position: relative;
+    left: 50%;
+}
+
+
+/* MENSAJE PAUSA NIVEL 2 */
+
+.Mensaje_Pauselvl2 {
+    font-size: 50px;
+    color: white;
+    display: table-cell;
+    vertical-align: middle;
+    font-family: 'Press Start 2P', cursive;
+}
+
+
+/* ALERTA NIVEL 2 */
+
+.Perdistelvl2 {
+    color: aqua;
+}
+
+
+.Aumentarpuntoslvl2 {
+    color: black;
+}
+
+
+/* =========================================================
+   NIVEL 3
+   ========================================================= */
+
+.Contenedorlvl3 {
+    width: 900px;
+    height: 500px;
+    border: 5px dashed red;
+    background: url(IMG/Fondo.jpg) no-repeat 50% 50%;
+    background-size: cover;
+    position: relative;
+    top: 4%;
+    overflow: hidden;
+}
+
+
+/* PANTALLA START NIVEL 3 */
+
+.Startlvl3 {
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.582);
+    position: absolute;
+    top: 0%;
+    z-index: 100000000000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color: white;
+    text-align: center;
+}
+
+
+/* BOTON NIVEL 3 */
+
+.Playlvl3 {
+    background: red;
+    color: white;
+    width: 18%;
+    height: 9%;
+    display: flex;
+    align-items: center;
+    left: 0;
+    justify-content: center;
+    cursor: pointer;
+    position: relative;
+    transition: 2s;
+    font-family: 'Press Start 2P', cursive;
+}
+
+
+#Dificultadlvl3 {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    top: 49%;
+    position: absolute;
+    left: 0%;
+    transition: 5s;
+}
+
+
+/* TITULO NIVEL 3 */
+
+.Textolvl3 {
+    font-size: 36px;
+    position: relative;
+    left: 0px;
+    top: -7%;
+    transition: 2s;
+    font-family: 'Press Start 2P', cursive;
+    line-height: 70px;
+}
+
+
+#Contenedor_contadorlvl3 {
+    height: 100%;
+    display: table;
+    position: absolute;
+}
+
+
+/* CONTADOR NIVEL 3 */
+
+#RGBlvl3 {
+    font-size: 220px;
+    position: relative;
+    font-family: 'Press Start 2P', cursive;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+
+/* PAUSA NIVEL 3 */
+
+.Pausa_Pantallalvl3 {
+    position: absolute;
+    top: 0%;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.541);
+    text-align: center;
+    z-index: 1000000000;
+    display: none;
+}
+
+
+/* METEORITOS NIVEL 3 */
+
+.Meteoritolvl3 {
+    cursor: pointer;
+    display: table;
+    position: absolute;
+    top: 0%;
+    z-index: 1000;
+}
+
+
+/* METEORITOS INDIVIDUALES NIVEL 3 */
+
+#Meteoritolvl3 {
+    top: 0%;
+    left: -10%;
+    transition: 1s;
+}
+
+
+#Meteorito2lvl3 {
+    top: 0%;
+    position: absolute;
+    left: -10%;
+    transition: 2s;
+}
+
+
+#Meteorito3lvl3 {
+    top: 0%;
+    position: absolute;
+    left: -10%;
+    transition: 3s;
+}
+
+
+#Meteorito4lvl3 {
+    top: 0%;
+    position: absolute;
+    left: -10%;
+    transition: 4s;
+}
+
+
+/* PLANETA NIVEL 3 */
+
+.Planetalvl3 {
+    position: absolute;
+    top: 12%;
+    left: 80%;
+    animation-name: rotation;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+
+/* LIMITE NIVEL 3 */
+
+.Limitelvl3 {
+    height: 100%;
+    width: 50px;
+    border-left: 5px dotted white;
+    position: absolute;
+    top: 0%;
+    left: 70%;
+}
+
+
+/* CABECERA NIVEL 3 */
+
+.Cabezeralvl3 {
+    height: 70px;
+    border: 5px dashed red;
+    background: rgba(255, 255, 255, 0.363);
+    border-bottom: none;
+    display: flex;
+    position: relative;
+}
+
+
+/* TIEMPO NIVEL 3 */
+
+.Tiempolvl3 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 14%;
+    height: 86%;
+    color: black;
+    font-size: 13px;
+    line-height: 1vh;
+}
+
+
+/* PUNTAJE NIVEL 3 */
+
+.Puntajelvl3 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 14%;
+    height: 86%;
+    color: black;
+    font-size: 13px;
+    line-height: 1vh;
+}
+
+
+/* =========================================================
+   SORPRESA NIVEL 3
+   ========================================================= */
+
+.Pantalla_navelvl3 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: absolute;
+    left: -100%;
+    top: 0;
+}
+
+
+.Pantalla_Nodrizalvl3 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: absolute;
+    left: -100%;
+    top: 32%;
+}
+
+
+.Pantalla_nave2lvl3 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: absolute;
+    left: -100%;
+    top: 63%;
+}
+
+
+.Ovnislvl3 {
+    width: 84px;
+    transform: rotate(90deg);
+}
+
+
+#Nodrizalvl3 {
+    width: 140px;
+    transform: rotate(90deg);
+}
+
+
+/* =========================================================
+   CREDITOS NIVEL 3
+   ========================================================= */
+
+#Pantalla_creditoslvl3 {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    transition: 2s;
+}
+
+
+#Creditoslvl3 {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: absolute;
+    top: -100%;
+    font-size: 26px;
+    color: snow;
+    line-height: 8px;
+}
+
+
+#Proximolvl3 {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: absolute;
+    bottom: -100%;
+    font-size: 30px;
+    color: snow;
+    line-height: 8px;
+}
+
+
+#Proximolvl3 h4 {
+    font-family: 'Press Start 2P', cursive;
+    line-height: 5px;
+}
+
+
+#Creditoslvl3 h3 {
+    font-family: 'Press Start 2P', cursive;
+}
+
+
+#Creditoslvl3 p {
+    font-family: 'Press Start 2P', cursive;
+}
+
+
+/* =========================================================
+   BOTON PAUSA NIVEL 3
+   ========================================================= */
+
+.Pauselvl3 {
+    width: 20%;
+    height: 70%;
+    font-size: 14px;
+    background: red;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    cursor: pointer;
+    position: relative;
+    top: 15%;
+    left: 50%;
+}
+
+
+/* MENSAJE PAUSA NIVEL 3 */
+
+.Mensaje_Pauselvl3 {
+    font-size: 50px;
+    color: white;
+    display: table-cell;
+    vertical-align: middle;
+    font-family: 'Press Start 2P', cursive;
+}
+
+
+/* =========================================================
+   RESPONSIVE SOLO PARA LA PRINCIPAL
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+    #Seccion_01 {
+        width: 100vw;
+        height: 100vh;
+        min-height: 100vh;
+    }
+
+    #Seccion_01 .Video_Fondo_Principal {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center center;
+    }
+
+    #Seccion_01 .Contenedor_RC {
+        top: 25px;
+        right: 20px;
+    }
+
+    #Seccion_01 .Nombre {
+        font-size: 48px;
+        letter-spacing: 5px;
+    }
+
+    #Seccion_01 .Nombre:hover {
+        letter-spacing: 7px;
+    }
+
+    #Seccion_01 .Texto_Principal {
+        font-size: 16px;
+        letter-spacing: 2px;
+        padding: 0 20px;
+    }
+
+    #Seccion_01 .Boton {
+        width: 210px;
+        height: 60px;
+        font-size: 15px;
+    }
+}
+
+
+/* =========================================================
+   CELULARES PEQUEÑOS
+   ========================================================= */
+
+@media (max-width: 480px) {
+
+    #Seccion_01 .Nombre {
+        font-size: 36px;
+        letter-spacing: 3px;
+    }
+
+    #Seccion_01 .Texto_Principal {
+        font-size: 13px;
+    }
+
+    #Seccion_01 .Boton {
+        width: 190px;
+        height: 55px;
+        font-size: 13px;
+    }
+}
+
+
+/* =========================================================
+   PANTALLAS HORIZONTALES
+   ========================================================= */
+
+@media (orientation: landscape) {
+
+    #Seccion_01 {
+        width: 100vw;
+        height: 100vh;
+    }
+
+    #Seccion_01 .Video_Fondo_Principal {
+        width: 100vw;
+        height: 100vh;
+        object-fit: cover;
+        object-position: center center;
+    }
+}#Seccion_01 .Contenedor_RC {
+    display: none !important;
+}
