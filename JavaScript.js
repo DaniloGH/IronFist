@@ -468,7 +468,6 @@ function PLAY() {
     setTimeout(ESPERAR, 350);
 }
 
-
 // =========================================================
 // PAUSA Y REANUDAR
 // =========================================================
@@ -480,13 +479,20 @@ function DETENER_JUEGO() {
         PAUSE
     );
 
-
     Activo = 1;
-
 
     function PAUSE() {
 
+        // Capturamos la etiqueta H3 de tu HTML
+        var textoPausa = document.getElementById("textoPausa");
+
         if (Activo == 1) {
+            // --- ENTRAMOS A ESTADO DE PAUSA ---
+
+            // Cambiamos el texto en pantalla a REANUDAR
+            if (textoPausa) {
+                textoPausa.textContent = "REANUDAR";
+            }
 
             document.getElementById("Fondo_Ciberpunk").pause();
 
@@ -527,6 +533,12 @@ function DETENER_JUEGO() {
             Activo = 2;
 
         } else {
+            // --- REANUDAMOS EL JUEGO ---
+
+            // Cambiamos el texto en pantalla de vuelta a PAUSAR
+            if (textoPausa) {
+                textoPausa.textContent = "PAUSAR";
+            }
 
             clearInterval(Pusae_offf);
 
@@ -652,8 +664,6 @@ function DETENER_JUEGO() {
         }
     }
 }
-
-
 // =========================================================
 // TRANSICIONES ENTRE PANTALLAS
 // =========================================================
