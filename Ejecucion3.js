@@ -29,8 +29,10 @@ function JUEGOlvl3() {
     //FUNCION QUE UNICAMENTE AUMENTA PUNTOS Y RESETEA LAS VARIABLES AL LLEGAR A CIERTO LIMITE
     function Aumentar_Puntoslvl3() {
         Puntajelvl3++;
-        document.getElementById("Puntajelvl3").innerHTML = Puntajelvl3 + " / 4"
-        if (Puntajelvl3 == 1) {
+        document.getElementById("Puntajelvl3").innerHTML = Puntajelvl3 + " / 15"
+        if (Puntajelvl3 == 15) {
+            document.getElementById("Pauselvl3").style.pointerEvents = "none";
+            document.getElementById("Pauselvl3").style.opacity = "0.5";
             Puntajelvl3 = 0
             Tiempolvl3 = 51
             function Contactos(){
@@ -301,18 +303,24 @@ function PLAYlvl3() {
 
 //ESTA FUNCION CONTIENE EL REANUDE Y PAUSE DEL BOTON
 function DETENER_JUEGOlvl3() {
-    //INDICA QUE LA FUNCION DE PAUSE SE EJECUTARA UNA VEZ SE DE CLICK AL BOTON DE PAUSE        
+    // INDICA QUE LA FUNCION DE PAUSE SE EJECUTARA UNA VEZ SE DE CLICK AL BOTON DE PAUSE        
     document.getElementById("Pauselvl3").addEventListener('click', PAUSElvl3)
-    //ESTA VARIABLE INDICA SI SE EJECUTA O NO EL DESPAUSEO
+    // ESTA VARIABLE INDICA SI SE EJECUTA O NO EL DESPAUSEO
     Activolvl3 = 1
-    //HACE QUE EL JUEGO SE DETENGA
+
+    // HACE QUE EL JUEGO SE DETENGA
     function PAUSElvl3() {
-        //SI LLEGA A UNA EJECUTA LA FUNCION PAUSE
+        let botonTextolvl3 = document.querySelector("#Pauselvl3 h3, .Pauselvl3 h3"); // Selecciona el ícono del nivel 3
+
+        // SI LLEGA A 1 EJECUTA LA FUNCION PAUSE
         if (Activolvl3 == 1) {
+            if (botonTextolvl3) botonTextolvl3.textContent = "▶"; // Cambia al ícono de REANUDAR (Play)
+
             document.getElementById("Pausa_Pantallalvl3").style.display = "table"
-            clearInterval(Restar_Tiempolvl3) //BORRAMOS LA FUNCION DE TIEMPO
+            clearInterval(Restar_Tiempolvl3) // BORRAMOS LA FUNCION DE TIEMPO
             document.getElementById("Tiempolvl3").innerHTML = Tiempolvl3
             document.getElementById("Fondo_Ciberpunk").pause()
+
             function Meteorito_detenerlvl3() {
                 clearInterval(Intervalo_Dirlvl3)
                 clearInterval(Intervalo_Dir2lvl3)
@@ -330,17 +338,18 @@ function DETENER_JUEGOlvl3() {
                 document.getElementById("Meteorito4lvl3").style.top = document.getElementById("Meteorito4lvl3").offsetTop + "px"
             }
 
-            Pause_offlvl3 = setInterval(Meteorito_detenerlvl3, 0.01) //LE ASEGNAMOS UNA ID, PARA BORRALO UNA VEZ SE DESPAUSEE
+            Pause_offlvl3 = setInterval(Meteorito_detenerlvl3, 0.01) // LE ASIGNAMOS UNA ID, PARA BORRARLO UNA VEZ SE DESPAUSEE
             Activolvl3 = 2
         }
-        //CAMBIAMOS EL VALOR PARA QUE AL VOLVER A DARLE CLICK EJECUTE LA CONDICIONAL DE REANUDAR
-        else { //LA FUNCION DE REANUDAR
+        // CAMBIAMOS EL VALOR PARA QUE AL VOLVER A DARLE CLICK EJECUTE LA CONDICIONAL DE REANUDAR
+        else { // LA FUNCION DE REANUDAR
+            if (botonTextolvl3) botonTextolvl3.textContent = "❚❚"; // Cambia al ícono de PAUSA
+
             document.getElementById("Pausa_Pantallalvl3").style.display = "none"
-            //BORRAMOS LA FUNCION, PARA QUE EL REANUDAR PUEDA EJECUTARSE DE NUEVO
             document.getElementById("Fondo_Ciberpunk").play()
             clearInterval(Pause_offlvl3)
 
-            function Tiempo_Disminurlvl3() { //VOLVEMOS A CREAR LA FUNCION DE TIEMPO PARA QUE REANUDE EL CONTEO
+            function Tiempo_Disminurlvl3() { // VOLVEMOS A CREAR LA FUNCION DE TIEMPO PARA QUE REANUDE EL CONTEO
                 Tiempolvl3--;
                 document.getElementById("Tiempolvl3").innerHTML = Tiempolvl3
                 if (Tiempolvl3 == 0) {
@@ -360,7 +369,6 @@ function DETENER_JUEGOlvl3() {
             document.getElementById("Meteorito2lvl3").style.top = Altura2lvl3 + "px"
             document.getElementById("Meteorito2lvl3").style.transition = "2.7s"
 
-            
             document.getElementById("Meteorito3lvl3").style.left = Distancia3lvl3 + "%"
             document.getElementById("Meteorito3lvl3").style.top = Altura3lvl3 + "px"
             document.getElementById("Meteorito3lvl3").style.transition = "2.7s"
@@ -369,10 +377,10 @@ function DETENER_JUEGOlvl3() {
             document.getElementById("Meteorito4lvl3").style.top = Altura4lvl3 + "px"
             document.getElementById("Meteorito4lvl3").style.transition = "2.7s"
             
-            //ESTA FUNCION DIRIGE AL METEORITO 1 A LA TIERRA
+            // ESTA FUNCION DIRIGE AL METEORITO 1 A LA TIERRA
             function Meteorito_Direccionlvl3() {
                 Distancia1lvl3 = 80
-                Altura1 = Math.round(Math.random() * 450)
+                Altura1lvl3 = Math.round(Math.random() * 450)
         
                 document.getElementById("Meteoritolvl3").style.left = Distancia1lvl3 + "%"
                 document.getElementById("Meteoritolvl3").style.top = Altura1lvl3 + "px"
@@ -382,7 +390,7 @@ function DETENER_JUEGOlvl3() {
             setTimeout(Meteorito_Direccionlvl3, 2000)
             Intervalo_Dirlvl3 = setInterval(Meteorito_Direccionlvl3, 2430)
         
-            //ESTA FUNCION DIRIGE AL METEORITO 2 A LA TIERRA         
+            // ESTA FUNCION DIRIGE AL METEORITO 2 A LA TIERRA         
             function Meteorito_Direccion2lvl3() {
                 Distancia2lvl3 = 80
                 Altura2lvl3 = Math.round(Math.random() * 450)
@@ -395,7 +403,7 @@ function DETENER_JUEGOlvl3() {
             setTimeout(Meteorito_Direccion2lvl3, 2000)
             Intervalo_Dir2lvl3 = setInterval(Meteorito_Direccion2lvl3, 2350)
         
-            //ESTA FUNCION DIRIGE AL METEORITO 3 A LA TIERRA
+            // ESTA FUNCION DIRIGE AL METEORITO 3 A LA TIERRA
             function Meteorito_Direccion3lvl3() {
                 Distancia3lvl3 = 80
                 Altura3lvl3 = Math.round(Math.random() * 450)
@@ -408,7 +416,7 @@ function DETENER_JUEGOlvl3() {
             setTimeout(Meteorito_Direccion3lvl3, 2000)
             Intervalo_Dir3lvl3 = setInterval(Meteorito_Direccion3lvl3, 2250)
         
-            //ESTA FUNCION DIRIGE AL METEORITO 4 A LA TIERRA
+            // ESTA FUNCION DIRIGE AL METEORITO 4 A LA TIERRA
             function Meteorito_Direccion4lvl3() {
                 Distancia4lvl3 = 80
                 Altura4lvl3 = Math.round(Math.random() * 450)
@@ -420,8 +428,6 @@ function DETENER_JUEGOlvl3() {
         
             setTimeout(Meteorito_Direccion4lvl3, 2000)
             Intervalo_Dir4lvl3 = setInterval(Meteorito_Direccion4lvl3, 2150)
-            
-            //BORRAMOS LA FUNCION, PARA QUE EL REANUDAR PUEDA EJECUTARSE DE NUEVO
 
             Activolvl3 = 1
         }

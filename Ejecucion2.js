@@ -14,8 +14,8 @@ function JUEGOlvl2(){
         Tiempolvl2--;
         document.getElementById("Tiempolvl2").innerHTML = Tiempolvl2
         if(Tiempolvl2 == 0){
-            Tiempolvl2 = 61
-            Puntajelvl2 = 0
+            Tiempolvl2 = 0
+            Puntajelvl2 = 61
             alert("El tiempo se agotó, lo lamento, de seguro lo lograrás para la siguiente")} }
 
     
@@ -30,14 +30,14 @@ function JUEGOlvl2(){
         //FUNCION QUE UNICAMENTE AUMENTA PUNTOS Y RESETEA LAS VARIABLES AL LLEGAR A CIERTO LIMITE
         function Aumentar_Puntoslvl2(){
             Puntajelvl2++;
-        document.getElementById("Puntajelvl2").innerHTML = Puntajelvl2 + " / 6";
+        document.getElementById("Puntajelvl2").innerHTML = Puntajelvl2 + " / 10";
 
-            if (Puntajelvl2 >= 6) {
+            if (Puntajelvl2 == 10) {
                 Puntajelvl2 = 0;
                 Tiempolvl2 = 61;
 
         document.getElementById("Tiempolvl2").innerHTML = 60;
-        document.getElementById("Puntajelvl2").innerHTML = "0&nbsp;/&nbsp;6";
+        document.getElementById("Puntajelvl2").innerHTML = "0&nbsp;/&nbsp;10";
         document.getElementById("Fondo_Ciberpunk").pause();
         document.getElementById("Triunfo").play();  
                 document.getElementById("NEXT").addEventListener('click', Habilitar_Siguienten_LVL)

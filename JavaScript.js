@@ -23,31 +23,25 @@ Puntaje = 0; // VARIABLE DE INICIO PUNTOS
 // FUNCIONES DE NARRACIONES
 // =========================================================
 
-Narracion = 1;
+var Narracion = 1;
+document.getElementById("Contenedor_narracion").addEventListener('click', Iniciar_narracion);
 
-document.getElementById("Contenedor_narracion").addEventListener(
-    'click',
-    Iniciar_narracion
-);
+document.getElementById("narracion").addEventListener('ended', function() {
+    document.getElementById("VOLUMEN").style.display = "table";
+    document.getElementById("PAUSE").style.display = "none";
+    Narracion = 1;
+});
 
 function Iniciar_narracion() {
-
     if (Narracion == 1) {
-
         document.getElementById("narracion").play();
-
         document.getElementById("VOLUMEN").style.display = "none";
         document.getElementById("PAUSE").style.display = "table";
-
         Narracion = 2;
-
     } else {
-
         document.getElementById("narracion").pause();
-
         document.getElementById("VOLUMEN").style.display = "table";
         document.getElementById("PAUSE").style.display = "none";
-
         Narracion = 1;
     }
 }
@@ -136,6 +130,7 @@ function Aumentar_Puntos() {
     document.getElementById("Puntaje").innerHTML = Puntaje + "&nbsp;/&nbsp;5";
 
     if (Puntaje == 5) {
+
         Puntaje = 0;
         Tiempo = 71;
 
@@ -1001,3 +996,8 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
 });
+
+function Reiniciar_Juego() {
+    location.reload();
+}
+

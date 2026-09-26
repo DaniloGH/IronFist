@@ -679,37 +679,15 @@
 
                 <!-- GANASTE NIVEL 1 -->
 
-                <div
-                    class="GANASTE_PANTALLA"
-                    id="GANASTE_PANTALLA">
+                <div class="GANASTE_PANTALLA" id="GANASTE_PANTALLA">
 
-
-                    <h1>
-
-                        LOGRO DESBLOQUEADO:
-                        DESTRUCTOR <br>
-                        DE ASTEROIDES
-
-                    </h1>
-
-
-                    <h3>
-
-                        FUE REALMENTE SORPRENDENTE COMO
-                        DEFENDISTE LA TIERRA.
-
-                        ESPEREMOS QUE SIGAS ASÍ.
-
-                        AHORA, ¿QUÉ ESPERAS?
-
-                        VE POR EL SIGUIENTE NIVEL.
-
-                        NO TE OLVIDES QUE TIENES LA OPCIÓN
-                        DE SIGUIENTE NIVEL DEBAJO DEL JUEGO.
-
-                    </h3>
-
-
+                <h1>LOGRO DESBLOQUEADO: DESTRUCTOR <br> DE ASTEROIDES</h1>
+                <h3> FUE REALMENTE SORPRENDENTE COMO DEFENDISTE LA TIERRA; 
+                ESPEREMOS QUE SIGAS ASI, AHORA, QUE ESPERAS? VE POR EL SIGUIENTE NIVEL, NO TE
+                OLVIDES QUE TIENES LA OPCIÓN DE SIGUIENTE NIVEL DEBAJO DEL JUEGO</h3>
+                <button class="NEXT" id="NEXT" onclick="Pasar_Siguiente_Nivel()">
+        SIGUIENTE NIVEL ➔
+    </button>
                 </div>
 
 
@@ -751,7 +729,7 @@
                     </h3>
 
                     <span id="Puntajelvl2">
-                        0 / 6
+                        0 / 10
                     </span>
 
                 </div>
@@ -933,7 +911,9 @@
                         ">
 
                     </div>
-
+<button class="NEXT" id="NEXT_LVL2" onclick="document.getElementById('GanastePantallaLvL2').style.display='none'; document.getElementById('NIVEL_02').style.display='none'; (document.getElementById('NIVEL_03')||document.getElementById('NIVEL3')).style.display='block';">
+    SIGUIENTE NIVEL ➔
+</button>
 
                 </div>
 
@@ -977,21 +957,15 @@
                     </h3>
 
                     <span id="Puntajelvl3">
-                        0 / 40
+                        0&nbsp;/&nbsp;15
                     </span>
 
                 </div>
 
 
-                <div
-                    class="Pauselvl3"
-                    id="Pauselvl3">
-
-                    <h3>
-                        PAUSE / REANUDAR
-                    </h3>
-
-                </div>
+                <div class="Pauselvl3" id="Pauselvl3">
+                        <h3>❚❚</h3>
+                    </div>
 
 
             </div>
@@ -1220,16 +1194,12 @@
 
 
                 <div id="Proximolvl3">
-
-                    <h4>
-                        Próximamente:
-                    </h4>
-
-                    <h4>
-                        Iron Fist 2
-                    </h4>
-
-                </div>
+                        <h4>Próximamente:</h4>
+                        <h4>Iron Fist 2</h4>
+                        <button class="Boton_Reiniciar" onclick="Reiniciar_Juego()">
+                        REPETIR JUEGO
+                    </button>
+                    </div>
 
 
 
@@ -1332,56 +1302,16 @@
 
             <!-- MENSAJE -->
 
-            <div
-                class="Nada"
-                id="Nada">
-
-
-                <h2>
-
-                    Una vez completes este nivel,
-                    se habilitará la opción
-                    "SIGUIENTE".
-
-                </h2>
-
-
-                <p>
-
-                    Recuerda que los niveles son progresivos
-                    y mejorarán tu nivel de reacción ante
-                    estímulos y mucho más importante,
-                    te dará una gran sorpresa al final.
-
-                    Así que recuerda no perdértela y no parar
-                    de intentar.
-
-                </p>
-
-
-            </div>
+            <div class="Nada" id="Nada"><h2>Una vez completes este nivel, se habilitará la opcion "SIGUIENTE".</h2><p>Recuerda que los niveles son progresivos
+    y mejorarán tu nivel de reacción ante estímulos y mucho más importante, te dará una gran sorpresa al final, así que recuerda
+    no perdértela y no parar de intentar 
+</p></div>
+<div class="NEXT" id="NEXT"><h2>SIGUIENTE NIVEL&nbsp;&nbsp;&nbsp;<i class="fas fa-arrow-right"></i></h2></div>
+</div>
 
 
 
-            <!-- SIGUIENTE -->
 
-            <div
-                class="NEXT"
-                id="NEXT">
-
-
-                <h2>
-
-                    SIGUIENTE NIVEL
-
-                    &nbsp;&nbsp;&nbsp;
-
-                    <i class="fas fa-arrow-right"></i>
-
-                </h2>
-
-
-            </div>
 
 
         </div>

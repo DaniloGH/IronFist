@@ -3011,7 +3011,7 @@ html body {
 
 
 .Fecha p {
-    font-size: 23px;
+    font-size: 18px;
     color: white;
     font-family: 'Inconsolata', monospace;
 }
@@ -3698,15 +3698,16 @@ html body {
     flex-direction: column;
     position: absolute;
     bottom: -100%;
-    font-size: 30px;
+    font-size: 15px;
     color: snow;
+    line-height: 5px;
     line-height: 8px;
 }
 
 
 #Proximolvl3 h4 {
     font-family: 'Press Start 2P', cursive;
-    line-height: 5px;
+    line-height: 3px;
 }
 
 
@@ -3724,120 +3725,195 @@ html body {
    BOTON PAUSA NIVEL 3
    ========================================================= */
 
+.Pauselvl3{
+        width: 20%;
+        height: 70%;
+        font-size: 14px;
+        background: red;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        cursor: pointer;
+        position: relative;
+        top: 15%;
+        left: 50%;
+    }
+    
+    /*MENSAJE DENTRO DE PAUSE*/
+    .Mensaje_Pauselvl3{
+        font-size: 50px;
+        color: white;
+        display: table-cell;
+        vertical-align: middle;
+        font-family: 'Press Start 2P', cursive;
+    }
+
+    .Boton_Reiniciar {
+        width: 220px;
+        height: 45px;
+        background: #8a2be2;
+        color: white;
+        font-family: 'Press Start 2P', cursive;
+        font-size: 11px;
+        border: 3px solid white;
+        border-radius: 6px;
+        cursor: pointer;
+        margin-top: 25px;
+        transition: transform 0.2s, background-color 0.2s;
+        box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.4);
+    }
+
+    .Boton_Reiniciar:hover {
+        background: #a040f0;
+        transform: scale(1.05);
+    }
+
+
+    .GANASTE_PANTALLA .NEXT {
+        position: relative !important;
+        left: 0 !important;
+        right: 0 !important;
+        margin: 15px auto 0 auto !important;
+        display: block;
+    }
+
+    .GANASTE_PANTALLA_LVL2 .NEXT,
+    #NEXT_LVL2 {
+        position: relative !important;
+        left: 0 !important;
+        right: 0 !important;
+        margin: 15px auto 0 auto !important;
+        display: block;
+    }
+
+
+
+.Cabezera, .Cabezeralvl2, .Cabezeralvl3 {
+    width: 100% !important;
+    display: flex !important;
+    justify-content: flex-start !important;
+    align-items: center !important;
+    gap: 15px !important; 
+    padding: 8px 25px 8px 15px !important; 
+    box-sizing: border-box !important;
+}
+
+.Tiempo, .Puntaje, 
+.Tiempolvl2, .Puntajelvl2, 
+.Tiempolvl3, .Puntajelvl3 {
+    background: rgba(15, 23, 42, 0.7) !important;
+    border: 1px solid rgba(0, 229, 255, 0.4) !important;
+    border-radius: 6px !important;
+    padding: 6px 10px !important;
+    min-width: 120px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+}
+
+.Tiempo h3, .Puntaje h3, 
+.Tiempolvl2 h3, .Puntajelvl2 h3, 
+.Tiempolvl3 h3, .Puntajelvl3 h3 {
+    font-family: 'Press Start 2P', cursive !important;
+    font-size: 9px !important;
+    color: #a5b4fc !important;
+    margin: 0 0 6px 0 !important;
+    line-height: 1 !important;
+    width: 100% !important;
+    text-align: center !important;
+}
+
+.Tiempo span, #Tiempo, 
+.Tiempolvl2 span, #Tiempolvl2, 
+.Tiempolvl3 span, #Tiempolvl3,
+.Puntaje span, #Puntaje, 
+.Puntajelvl2 span, #Puntajelvl2, 
+.Puntajelvl3 span, #Puntajelvl3 {
+    font-family: 'Press Start 2P', cursive !important;
+    font-size: 13px !important;
+    line-height: 1 !important;
+    display: block !important;
+    width: 100% !important;
+    text-align: center !important;
+}
+
+.Tiempo span, #Tiempo, .Tiempolvl2 span, #Tiempolvl2, .Tiempolvl3 span, #Tiempolvl3 {
+    color: #00ffcc !important;
+    text-shadow: 0 0 5px #00ffcc !important;
+}
+
+.Puntaje span, #Puntaje, .Puntajelvl2 span, #Puntajelvl2, .Puntajelvl3 span, #Puntajelvl3 {
+    color: #ffe600 !important;
+    text-shadow: 0 0 5px #ffe600 !important;
+}
+
+.Tiempo span, #Tiempo, 
+.Tiempolvl2 span, #Tiempolvl2, 
+.Tiempolvl3 span, #Tiempolvl3 {
+    font-family: 'Press Start 2P', cursive !important;
+    font-size: 14px !important; 
+    color: #00ffcc !important;
+    text-shadow: 0 0 5px #00ffcc !important;
+}
+
+.Puntaje span, #Puntaje, 
+.Puntajelvl2 span, #Puntajelvl2, 
+.Puntajelvl3 span, #Puntajelvl3 {
+    font-family: 'Press Start 2P', cursive !important;
+    font-size: 14px !important; 
+    color: #ffe600 !important;
+    text-shadow: 0 0 5px #ffe600 !important;
+}
+  
+
+/* 1. Cursor de mira únicamente para la zona de juego y meteoritos */
+#NIVEL_01, #NIVEL_02, #NIVEL_03,
+#Meteiorito, #Meteiorito2, #Meteiorito3,
+#Meteioritolvl2, #Meteiorito2lvl2, #Meteiorito3lvl2,
+#Meteioritolvl3, #Meteiorito2lvl3, #Meteiorito3lvl3 {
+    cursor: url('IMG/images.png') 16 16, crosshair !important;
+}
+
+/* 2. Cursor por defecto para textos, cabeceras, pantalla verde de victoria y alertas */
+#NIVEL_01 h1, #NIVEL_01 h2, #NIVEL_01 h3, #NIVEL_01 p, #NIVEL_01 span,
+#NIVEL_02 h1, #NIVEL_02 h2, #NIVEL_02 h3, #NIVEL_02 p, #NIVEL_02 span,
+#NIVEL_03 h1, #NIVEL_03 h2, #NIVEL_03 h3, #NIVEL_03 p, #NIVEL_03 span,
+.Cabezera, .Cabezeralvl2, .Cabezeralvl3,
+#GANASTE_PANTALLA, #GANASTE_PANTALLA *,
+.swal2-container, .swal2-popup {
+    cursor: default !important;
+}
+
+/* 3. Cursor de manito de clic para todos los botones e interacción */
+button, input[type="button"], 
+.Pause, .Pauselvl2, .Pauselvl3, 
+#NEXT, #GANASTE_PANTALLA button {
+    cursor: pointer !important;
+}
+
+/* Botón pausa */
+
 .Pauselvl3 {
-    width: 20%;
-    height: 70%;
-    font-size: 14px;
-    background: red;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    cursor: pointer;
-    position: relative;
-    top: 15%;
-    left: 50%;
+    width: 48px !important;           
+    height: 44px !important;           
+    margin-left: 15px !important;      
+    padding: 0 !important;
+    display: flex !important;
+    justify-content: center !important; 
+    align-items: center !important;    
+    flex-shrink: 0 !important;        
+    box-sizing: border-box !important;
+    border-radius: 6px !important;
 }
 
-
-/* MENSAJE PAUSA NIVEL 3 */
-
-.Mensaje_Pauselvl3 {
-    font-size: 50px;
-    color: white;
-    display: table-cell;
-    vertical-align: middle;
-    font-family: 'Press Start 2P', cursive;
+.Pauselvl3 h3 {
+    font-family: 'Press Start 2P', cursive !important;
+    font-size: 14px !important;      
+    margin: 0 !important;
+    line-height: 1 !important;
+    text-align: center !important;
 }
 
-
-/* =========================================================
-   RESPONSIVE SOLO PARA LA PRINCIPAL
-   ========================================================= */
-
-@media (max-width: 768px) {
-
-    #Seccion_01 {
-        width: 100vw;
-        height: 100vh;
-        min-height: 100vh;
-    }
-
-    #Seccion_01 .Video_Fondo_Principal {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        object-position: center center;
-    }
-
-    #Seccion_01 .Contenedor_RC {
-        top: 25px;
-        right: 20px;
-    }
-
-    #Seccion_01 .Nombre {
-        font-size: 48px;
-        letter-spacing: 5px;
-    }
-
-    #Seccion_01 .Nombre:hover {
-        letter-spacing: 7px;
-    }
-
-    #Seccion_01 .Texto_Principal {
-        font-size: 16px;
-        letter-spacing: 2px;
-        padding: 0 20px;
-    }
-
-    #Seccion_01 .Boton {
-        width: 210px;
-        height: 60px;
-        font-size: 15px;
-    }
-}
-
-
-/* =========================================================
-   CELULARES PEQUEÑOS
-   ========================================================= */
-
-@media (max-width: 480px) {
-
-    #Seccion_01 .Nombre {
-        font-size: 36px;
-        letter-spacing: 3px;
-    }
-
-    #Seccion_01 .Texto_Principal {
-        font-size: 13px;
-    }
-
-    #Seccion_01 .Boton {
-        width: 190px;
-        height: 55px;
-        font-size: 13px;
-    }
-}
-
-
-/* =========================================================
-   PANTALLAS HORIZONTALES
-   ========================================================= */
-
-@media (orientation: landscape) {
-
-    #Seccion_01 {
-        width: 100vw;
-        height: 100vh;
-    }
-
-    #Seccion_01 .Video_Fondo_Principal {
-        width: 100vw;
-        height: 100vh;
-        object-fit: cover;
-        object-position: center center;
-    }
-}#Seccion_01 .Contenedor_RC {
-    display: none !important;
-}
