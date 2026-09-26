@@ -120,123 +120,72 @@ function JUEGO() {
     Restar_Tiempo = setInterval(Tiempo_Disminur, 1000);
 
 
-    // =====================================================
-    // AUMENTAR PUNTOS
-    // =====================================================
+// =====================================================
+// INICIALIZACIÓN Y AUMENTAR PUNTOS 
+// =====================================================
 
-    document.getElementById("Meteiorito").addEventListener(
-        'mouseover',
-        Aumentar_Puntos
-    );
+Puntaje = 0;
+document.getElementById("Puntaje").innerHTML = "0&nbsp;/&nbsp;5";
 
-    document.getElementById("Meteiorito2").addEventListener(
-        'mouseover',
-        Aumentar_Puntos
-    );
+document.getElementById("Meteiorito").addEventListener('mouseover', Aumentar_Puntos);
+document.getElementById("Meteiorito2").addEventListener('mouseover', Aumentar_Puntos);
 
+function Aumentar_Puntos() {
 
-    function Aumentar_Puntos() {
+    Puntaje++;
+    document.getElementById("Puntaje").innerHTML = Puntaje + "&nbsp;/&nbsp;5";
 
-        Puntaje++;
+    if (Puntaje == 5) {
+        Puntaje = 0;
+        Tiempo = 71;
 
-        document.getElementById("Puntaje").innerHTML =
-            Puntaje + "&nbsp;/&nbsp;5";
+        document.getElementById("NEXT").addEventListener('click', Habilitar_Siguienten_LVL);
 
-        if (Puntaje == 5) {
-
-            Puntaje = 0;
-            Tiempo = 71;
-
-
-            document.getElementById("NEXT").addEventListener(
-                'click',
-                Habilitar_Siguienten_LVL
-            );
-
-
-            function Habilitar_Siguienten_LVL() {
-
-                document.getElementById("NIVEL_01").style.display = "none";
-
-                document.getElementById("NIVEL_02").style.display = "block";
-            }
-
-
-            document.getElementById("Tiempo").innerHTML = 70;
-
-            document.getElementById("Puntaje").innerHTML =
-                0 + "&nbsp;/&nbsp;" + 27;
-
-            document.getElementById("Triunfo").play();
-
-            document.getElementById("Fondo_Ciberpunk").pause();
-
-            document.getElementById("Puntos_sound").pause();
-
-            document.getElementById("Punto2").pause();
-
-            document.getElementById("GANASTE_PANTALLA").style.display =
-                "flex";
-
-
-            function Ganaste_Pantalla() {
-
-                clearInterval(Reanudar_trayectoria);
-
-                clearInterval(Reanudar_trayectoria2);
-
-                clearInterval(Restar_Tiempo);
-
-
-                document.getElementById("Meteiorito").style.left =
-                    "-70%";
-
-                document.getElementById("Meteiorito").style.transition =
-                    "0s";
-
-
-                document.getElementById("Meteiorito2").style.left =
-                    "-70%";
-
-                document.getElementById("Meteiorito2").style.transition =
-                    "0s";
-            }
-
-
-            Desbloquear_Pantalla =
-                setInterval(Ganaste_Pantalla, 1);
-
-
-            Swal.fire({
-
-                title:
-                    'FELICIDADES POR SUPERAR <br> EL NIVEL <br><br> <img src="IMG/Check.png" width="120px"><br>',
-
-                html:
-                    'Al parecer nos salvamos, agradecemos tu ayuda y ezfuerzo al superar este nivel, esperamos seguir contando contigo, si algo mas sucede y por cierto, no olvides que te esperan grandes cosas al final del juego asi que no pares de intentar',
-
-                icon: 'success',
-
-                confirmButtonText: 'QUIERO CONTINUAR',
-
-                width: '50%',
-
-                height: '80%',
-
-                timer: 100000,
-
-                timerProgressbar: true,
-
-                allowOutsideClick: true,
-
-                allowEscapeKey: false,
-
-                allowEnterKey: false,
-
-                stopKeydownPropagation: false
-            });
+        function Habilitar_Siguienten_LVL() {
+            document.getElementById("NIVEL_01").style.display = "none";
+            document.getElementById("NIVEL_02").style.display = "block";
         }
+
+        document.getElementById("Tiempo").innerHTML = 70;
+        document.getElementById("Puntaje").innerHTML = "0&nbsp;/&nbsp;5";
+
+        document.getElementById("Triunfo").play();
+        document.getElementById("Fondo_Ciberpunk").pause();
+        document.getElementById("Puntos_sound").pause();
+        document.getElementById("Punto2").pause();
+
+        document.getElementById("GANASTE_PANTALLA").style.display = "flex";
+
+        function Ganaste_Pantalla() {
+            if (typeof Reanudar_trayectoria !== 'undefined') clearInterval(Reanudar_trayectoria);
+            if (typeof Reanudar_trayectoria2 !== 'undefined') clearInterval(Reanudar_trayectoria2);
+            if (typeof Restar_Tiempo !== 'undefined') clearInterval(Restar_Tiempo);
+
+            document.getElementById("Meteiorito").style.left = "-70%";
+            document.getElementById("Meteiorito").style.transition = "0s";
+
+            document.getElementById("Meteiorito2").style.left = "-70%";
+            document.getElementById("Meteiorito2").style.transition = "0s";
+        }
+
+        Desbloquear_Pantalla = setInterval(Ganaste_Pantalla, 1);
+
+        Swal.fire({
+            title: 'FELICIDADES POR SUPERAR <br> EL NIVEL <br><br> <img src="IMG/Check.png" width="120px"><br>',
+            html: 'Al parecer nos salvamos, agradecemos tu ayuda y esfuerzo al superar este nivel, esperamos seguir contando contigo si algo más sucede.',
+            icon: 'success',
+            confirmButtonText: 'QUIERO CONTINUAR',
+            width: '50%',
+            height: '80%',
+            timer: 100000,
+            timerProgressbar: true,
+            allowOutsideClick: true,
+            allowEscapeKey: false,
+            allowEnterkey: false,
+            stopKeydownPropagation: false
+        });
     }
+}
 
 
     // =====================================================
@@ -469,198 +418,129 @@ function PLAY() {
 }
 
 // =========================================================
-// PAUSA Y REANUDAR
+// PAUSA Y REANUDAR COMPLETO - NIVEL 1
 // =========================================================
-
 function DETENER_JUEGO() {
-
-    document.getElementById("Pause").addEventListener(
-        'click',
-        PAUSE
-    );
+    // Vinculación al botón interactivo del Nivel 1
+    var btnPausa = document.getElementById("btnPausalvl1");
+    if (btnPausa) {
+        btnPausa.addEventListener('click', PAUSE);
+    }
 
     Activo = 1;
 
     function PAUSE() {
-
-        // Capturamos la etiqueta H3 de tu HTML
-        var textoPausa = document.getElementById("textoPausa");
+        var btn = document.getElementById("btnPausalvl1");
+        var icono = document.getElementById("iconoPausalvl1");
+        var texto = document.getElementById("textoPausalvl1");
 
         if (Activo == 1) {
-            // --- ENTRAMOS A ESTADO DE PAUSA ---
+            // =====================================================
+            // 1. ESTADO: PAUSAR 
+            // =====================================================
 
-            // Cambiamos el texto en pantalla a REANUDAR
-            if (textoPausa) {
-                textoPausa.textContent = "REANUDAR";
-            }
+            // Cambio visual de la interfaz a modo "REANUDAR" (Verde Neón)
+            if (btn) btn.classList.add("btn-reanudar");
+            if (icono) icono.innerHTML = "▶";
+            if (texto) texto.innerText = "REANUDAR";
 
+            // Despliegue de overlay de pausa y detención de audio
+            document.getElementById("Pausa_Pantalla").style.display = "table";
             document.getElementById("Fondo_Ciberpunk").pause();
 
-            document.getElementById("Pausa_Pantalla").style.display =
-                "table";
-
+            // Congelar el temporizador global
             clearInterval(Restar_Tiempo);
+            document.getElementById("Tiempo").innerHTML = Tiempo;
 
-            document.getElementById("Tiempo").innerHTML =
-                Tiempo;
+            // Detener las trayectorias de los meteoritos
+            if (typeof Reanudar_trayectoria !== 'undefined') clearInterval(Reanudar_trayectoria);
+            if (typeof Reanudar_trayectoria2 !== 'undefined') clearInterval(Reanudar_trayectoria2);
 
-            clearInterval(Reanudar_trayectoria2);
-
-            clearInterval(Reanudar_trayectoria);
-
-
+            // Fijar posiciones exactas en el canvas/DOM durante el estado pausado
             function Metiorito_detener() {
+                var met1 = document.getElementById("Meteiorito");
+                var met2 = document.getElementById("Meteiorito2");
 
-                document.getElementById("Meteiorito").style.left =
-                    document.getElementById("Meteiorito").offsetLeft + "px";
-
-                document.getElementById("Meteiorito2").style.left =
-                    document.getElementById("Meteiorito2").offsetLeft + "px";
-
-
-                document.getElementById("Meteiorito").style.top =
-                    document.getElementById("Meteiorito").offsetTop + "px";
-
-                document.getElementById("Meteiorito2").style.top =
-                    document.getElementById("Meteiorito2").offsetTop + "px";
-            }
-
-
-            Pusae_offf =
-                setInterval(Metiorito_detener, 1);
-
-
-            Activo = 2;
-
-        } else {
-            // --- REANUDAMOS EL JUEGO ---
-
-            // Cambiamos el texto en pantalla de vuelta a PAUSAR
-            if (textoPausa) {
-                textoPausa.textContent = "PAUSAR";
-            }
-
-            clearInterval(Pusae_offf);
-
-
-            document.getElementById("Pausa_Pantalla").style.display =
-                "none";
-
-            document.getElementById("Fondo_Ciberpunk").play();
-
-
-            function Tiempo_Disminur() {
-
-                Tiempo--;
-
-                document.getElementById("Tiempo").innerHTML =
-                    Tiempo;
-
-
-                if (Tiempo == 0) {
-
-                    Tiempo = 71;
-
-                    Puntaje = 0;
-
-                    document.getElementById("Perdiste_sound").play();
-
-                    alert("Lo lamento perdiste");
-
-
-                    document.getElementById("Meteiorito").style.left =
-                        "-70%";
-
-                    document.getElementById("Meteiorito").style.transition =
-                        "0s";
-
-
-                    document.getElementById("Meteiorito2").style.left =
-                        "-70%";
-
-                    document.getElementById("Meteiorito2").style.transition =
-                        "0s";
-
-                } else {
-
-                    document.getElementById("Meteiorito").style.transition =
-                        "2.4s";
-
-                    document.getElementById("Meteiorito2").style.transition =
-                        "2.4s";
+                if (met1) {
+                    met1.style.left = met1.offsetLeft + "px";
+                    met1.style.top = met1.offsetTop + "px";
+                }
+                if (met2) {
+                    met2.style.left = met2.offsetLeft + "px";
+                    met2.style.top = met2.offsetTop + "px";
                 }
             }
 
+            Pusae_offf = setInterval(Metiorito_detener, 1);
+            Activo = 2; // Transición de estado a Pausado
 
-            Restar_Tiempo =
-                setInterval(Tiempo_Disminur, 1000);
+        } else {
+            // =====================================================
+            // 2. ESTADO: REANUDAR
+            // =====================================================
 
+            // Restauración visual de la interfaz a modo "PAUSAR" (Azul Neón)
+            if (btn) btn.classList.remove("btn-reanudar");
+            if (icono) icono.innerHTML = "⏸";
+            if (texto) texto.innerText = "PAUSAR";
 
-            document.getElementById("Meteiorito").style.left =
-                Distancia1 + "%";
+            // Ocultar overlay y reanudar audio
+            clearInterval(Pusae_offf);
+            document.getElementById("Pausa_Pantalla").style.display = "none";
+            document.getElementById("Fondo_Ciberpunk").play();
 
-            document.getElementById("Meteiorito").style.top =
-                Altura1 + "px";
-
-            document.getElementById("Meteiorito").style.transition =
-                "2.4s";
-
-
-            document.getElementById("Meteiorito2").style.left =
-                Distancia2 + "%";
-
-            document.getElementById("Meteiorito2").style.top =
-                Altura2 + "px";
-
-            document.getElementById("Meteiorito2").style.transition =
-                "2.4s";
-
-
-            function Metiorito_Direccion() {
-
-                Distancia1 = 80;
-
-                Altura1 =
-                    Math.round(Math.random() * 450);
-
-
-                document.getElementById("Meteiorito").style.left =
-                    Distancia1 + "%";
-
-                document.getElementById("Meteiorito").style.top =
-                    Altura1 + "px";
+            // Reanudar el conteo regresivo del tiempo
+            function Tiempo_Disminur() {
+                Tiempo--;
+                document.getElementById("Tiempo").innerHTML = Tiempo;
+                if (Tiempo == 0) {
+                    Tiempo = 71;
+                    Puntaje = 0;
+                    alert("Lo lamento, el tiempo se agotó en el Nivel 1");
+                }
             }
 
+            Restar_Tiempo = setInterval(Tiempo_Disminur, 1000);
 
-            setTimeout(Metiorito_Direccion, 2000);
+            // Reanudar movimiento físico y transiciones de los meteoritos
+            var met1 = document.getElementById("Meteiorito");
+            var met2 = document.getElementById("Meteiorito2");
 
-            Reanudar_trayectoria =
-                setInterval(Metiorito_Direccion, 2430);
+            if (met1 && typeof Distancia1 !== 'undefined') {
+                met1.style.left = Distancia1 + "%";
+                met1.style.top = Altura1 + "px";
+                met1.style.transition = "2s";
+            }
+            if (met2 && typeof Distancia2 !== 'undefined') {
+                met2.style.left = Distancia2 + "%";
+                met2.style.top = Altura2 + "px";
+                met2.style.transition = "2s";
+            }
 
+            // Reprogramar los intervalos de movimiento aleatorio
+            function Metiorito_Direccion() {
+                Distancia1 = 80;
+                Altura1 = Math.round(Math.random() * 450);
+                if (met1) {
+                    met1.style.left = Distancia1 + "%";
+                    met1.style.top = Altura1 + "px";
+                }
+            }
+            setTimeout(Metiorito_Direccion, 1700);
+            Reanudar_trayectoria = setInterval(Metiorito_Direccion, 2430);
 
             function Metiorito_Direccion2() {
-
                 Distancia2 = 80;
-
-                Altura2 =
-                    Math.round(Math.random() * 450);
-
-
-                document.getElementById("Meteiorito2").style.left =
-                    Distancia2 + "%";
-
-                document.getElementById("Meteiorito2").style.top =
-                    Altura2 + "px";
+                Altura2 = Math.round(Math.random() * 400);
+                if (met2) {
+                    met2.style.left = Distancia2 + "%";
+                    met2.style.top = Altura2 + "px";
+                }
             }
+            setTimeout(Metiorito_Direccion2, 1);
+            Reanudar_trayectoria2 = setInterval(Metiorito_Direccion2, 2050);
 
-
-            setTimeout(Metiorito_Direccion2, 2000);
-
-            Reanudar_trayectoria2 =
-                setInterval(Metiorito_Direccion2, 2350);
-
-
-            Activo = 1;
+            Activo = 1; // Transición de estado a Activo
         }
     }
 }

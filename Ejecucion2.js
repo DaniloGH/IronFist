@@ -30,15 +30,16 @@ function JUEGOlvl2(){
         //FUNCION QUE UNICAMENTE AUMENTA PUNTOS Y RESETEA LAS VARIABLES AL LLEGAR A CIERTO LIMITE
         function Aumentar_Puntoslvl2(){
             Puntajelvl2++;
-            document.getElementById("Puntajelvl2").innerHTML = Puntajelvl2 + " / 4"
-            if(Puntajelvl2 == 2){
-                Puntajelvl2 = 0 
-                Tiempolvl2 = 61
+        document.getElementById("Puntajelvl2").innerHTML = Puntajelvl2 + " / 6";
 
-                document.getElementById("Tiempolvl2").innerHTML = 60
-                document.getElementById("Puntajelvl2").innerHTML = 0+"&nbsp;/&nbsp;"+34
-                document.getElementById("Fondo_Ciberpunk").pause()
-                document.getElementById("Triunfo").play()
+            if (Puntajelvl2 >= 6) {
+                Puntajelvl2 = 0;
+                Tiempolvl2 = 61;
+
+        document.getElementById("Tiempolvl2").innerHTML = 60;
+        document.getElementById("Puntajelvl2").innerHTML = "0&nbsp;/&nbsp;6";
+        document.getElementById("Fondo_Ciberpunk").pause();
+        document.getElementById("Triunfo").play();  
                 document.getElementById("NEXT").addEventListener('click', Habilitar_Siguienten_LVL)
                 function Habilitar_Siguienten_LVL(){
                 document.getElementById("NIVEL_01").style.display = "none"
@@ -233,38 +234,47 @@ function JUEGOlvl2(){
 
                         setTimeout(ESPERARlvl2, 350)}//SE EJECUTARA EN UN LAPSO DE 350, DESPUES DE PRESIONAR EL BOTON
 
-
 // =========================================================
-// PAUSA Y REANUDAR - NIVEL 2
+// PAUSA Y REANUDAR COMPLETO - NIVEL 2
 // =========================================================
 function DETENER_JUEGOlvl2() {
-    // Escuchador para el botón de pausa del Nivel 2
-    document.getElementById("Pauselvl2").addEventListener('click', PAUSElvl2);
+    // Vinculación al botón interactivo del Nivel 2
+    var btnPausa = document.getElementById("Pauselvl2");
+    if (btnPausa) {
+        btnPausa.addEventListener('click', PAUSElvl2);
+    }
 
-    Activolvl2 = 1;
+    Activo = 1;
 
     function PAUSElvl2() {
-        // Obtenemos el contenedor de texto del botón de pausa
-        var textoPausa = document.getElementById("textoPausalvl2");
+        var btn = document.getElementById("Pauselvl2");
+        var icono = document.getElementById("iconoPausalvl2");
+        var texto = document.getElementById("textoPausalvl2");
 
-        if (Activolvl2 == 1) {
-            // --- ENTRAMOS A ESTADO DE PAUSA ---
+        if (Activo == 1) {
+            // =====================================================
+            // 1. ESTADO: PAUSAR (Se activa al presionar PAUSAR)
+            // =====================================================
 
-            if (textoPausa) {
-                textoPausa.textContent = "REANUDAR";
-            }
+            // Cambio visual a modo "REANUDAR" (Verde Neón)
+            if (btn) btn.classList.add("btn-reanudar");
+            if (icono) icono.innerHTML = "▶";
+            if (texto) texto.innerText = "REANUDAR";
 
+            // Despliegue de overlay de pausa y detención de audio
             document.getElementById("Pausa_Pantallalvl2").style.display = "table";
             document.getElementById("Fondo_Ciberpunk").pause();
-            
+
+            // Congelar el temporizador global del Nivel 2
             clearInterval(Restar_Tiempolvl2);
             document.getElementById("Tiempolvl2").innerHTML = Tiempolvl2;
 
-            // Pausamos las trayectorias activas de los 3 meteoritos
+            // Detener las trayectorias de los 3 meteoritos del Nivel 2
             if (typeof Reanudar_trayectorialvl2 !== 'undefined') clearInterval(Reanudar_trayectorialvl2);
             if (typeof Reanudar_trayectoria2lvl2 !== 'undefined') clearInterval(Reanudar_trayectoria2lvl2);
             if (typeof Reanudar_trayectoria3lvl2 !== 'undefined') clearInterval(Reanudar_trayectoria3lvl2);
 
+            // Fijar posiciones exactas en el DOM durante la pausa
             function Metiorito_detenerlvl2() {
                 var met1 = document.getElementById("Meteioritolvl2");
                 var met2 = document.getElementById("Meteiorito2lvl2");
@@ -285,39 +295,44 @@ function DETENER_JUEGOlvl2() {
             }
 
             Pusae_offflvl2 = setInterval(Metiorito_detenerlvl2, 1);
-            Activolvl2 = 2;
+            Activo = 2; // Transición a estado Pausado
 
         } else {
-            // --- REANUDAMOS EL JUEGO ---
+            // =====================================================
+            // 2. ESTADO: REANUDAR (Se activa al presionar REANUDAR)
+            // =====================================================
 
-            if (textoPausa) {
-                textoPausa.textContent = "PAUSAR";
-            }
+            // Restauración visual a modo "PAUSAR" (Azul Neón)
+            if (btn) btn.classList.remove("btn-reanudar");
+            if (icono) icono.innerHTML = "⏸";
+            if (texto) texto.innerText = "PAUSAR";
 
+            // Ocultar overlay y reanudar audio
             clearInterval(Pusae_offflvl2);
             document.getElementById("Pausa_Pantallalvl2").style.display = "none";
             document.getElementById("Fondo_Ciberpunk").play();
 
+            // Reanudar el conteo regresivo del tiempo del Nivel 2
             function Tiempo_Disminurlvl2() {
                 Tiempolvl2--;
                 document.getElementById("Tiempolvl2").innerHTML = Tiempolvl2;
                 if (Tiempolvl2 == 0) {
                     Tiempolvl2 = 61;
                     Puntajelvl2 = 0;
-                    alert("Lo lamento perdiste");
+                    alert("Lo lamento, el tiempo se agotó en el Nivel 2");
                 }
             }
 
             Restar_Tiempolvl2 = setInterval(Tiempo_Disminurlvl2, 1000);
 
-            // Reanudación de las posiciones de los meteoritos
+            // Reanudar posiciones y transiciones de los meteoritos
             var met1 = document.getElementById("Meteioritolvl2");
             var met2 = document.getElementById("Meteiorito2lvl2");
             var met3 = document.getElementById("Meteiorito3lvl2");
 
-            if (met1 && typeof Distancia1lvl2 !== 'undefined') {
-                met1.style.left = Distancia1lvl2 + "%";
-                met1.style.top = Altura1lvl2 + "px";
+            if (met1 && typeof Distancialvl2 !== 'undefined') {
+                met1.style.left = Distancialvl2 + "%";
+                met1.style.top = Alturalvl2 + "px";
                 met1.style.transition = "2s";
             }
             if (met2 && typeof Distancia2lvl2 !== 'undefined') {
@@ -331,13 +346,13 @@ function DETENER_JUEGOlvl2() {
                 met3.style.transition = "2s";
             }
 
-            // Reprogramación de las trayectorias de meteoritos
+            // Reprogramar los intervalos de movimiento aleatorio para los 3 meteoritos
             function Metiorito_Direccionlvl2() {
-                Distancia1lvl2 = 80;
-                Altura1lvl2 = Math.round(Math.random() * 450);
+                Distancialvl2 = 80;
+                Alturalvl2 = Math.round(Math.random() * 450);
                 if (met1) {
-                    met1.style.left = Distancia1lvl2 + "%";
-                    met1.style.top = Altura1lvl2 + "px";
+                    met1.style.left = Distancialvl2 + "%";
+                    met1.style.top = Alturalvl2 + "px";
                 }
             }
             setTimeout(Metiorito_Direccionlvl2, 1700);
@@ -356,16 +371,16 @@ function DETENER_JUEGOlvl2() {
 
             function Metiorito_Direccion3lvl2() {
                 Distancia3lvl2 = 80;
-                Altura3lvl2 = Math.round(Math.random() * 350);
+                Altura3lvl2 = Math.round(Math.random() * 400);
                 if (met3) {
                     met3.style.left = Distancia3lvl2 + "%";
                     met3.style.top = Altura3lvl2 + "px";
                 }
             }
-            setTimeout(Metiorito_Direccion3lvl2, 1700);
-            Reanudar_trayectoria3lvl2 = setInterval(Metiorito_Direccion3lvl2, 2570);
+            setTimeout(Metiorito_Direccion3lvl2, 1);
+            Reanudar_trayectoria3lvl2 = setInterval(Metiorito_Direccion3lvl2, 2200);
 
-            Activolvl2 = 1;
+            Activo = 1; // Transición a estado Activo
         }
     }
 }

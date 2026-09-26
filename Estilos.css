@@ -2895,35 +2895,53 @@ html body {
 }
 
 
-/* =========================================================
-   BOTON PAUSA
-   ========================================================= */
-
-.Pause {
-    width: 20%;
-    height: 70%;
-    font-size: 14px;
-    background: purple;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    cursor: pointer;
-    position: relative;
-    left: 50%;
+/* Botón Neón Llamativo para el Nivel 1 */
+.btn-lvl1 {
+  background: linear-gradient(135deg, #0b0f19, #1b263b);
+  color: #00f0ff;
+  font-family: 'Press Start 2P', Arial, sans-serif; /* Puedes usar la tipografía de tu juego */
+  font-size: 13px;
+  font-weight: bold;
+  padding: 12px 22px;
+  border: 2px solid #00f0ff;
+  border-radius: 10px;
+  cursor: pointer;
+  outline: none;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 0 12px rgba(0, 240, 255, 0.5), inset 0 0 8px rgba(0, 240, 255, 0.2);
+  transition: all 0.25s ease-in-out;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
 }
 
-
-/* MENSAJE PAUSA */
-
-.Mensaje_Pause {
-    font-size: 50px;
-    color: white;
-    display: table-cell;
-    vertical-align: middle;
-    font-family: 'Press Start 2P', cursive;
+/* Efecto Hover (Al pasar el cursor) */
+.btn-lvl1:hover {
+  background: #00f0ff;
+  color: #050811;
+  box-shadow: 0 0 22px #00f0ff, 0 0 40px #00f0ff;
+  transform: translateY(-2px) scale(1.04);
 }
 
+/* Efecto Active (Al presionar) */
+.btn-lvl1:active {
+  transform: translateY(1px) scale(0.97);
+  box-shadow: 0 0 8px #00f0ff;
+}
+
+/* Estado de REANUDAR (Verde Neón Brillante) */
+.btn-lvl1.btn-reanudar {
+  color: #39ff14;
+  border-color: #39ff14;
+  box-shadow: 0 0 12px rgba(57, 255, 20, 0.5), inset 0 0 8px rgba(57, 255, 20, 0.2);
+}
+
+.btn-lvl1.btn-reanudar:hover {
+  background: #39ff14;
+  color: #050811;
+  box-shadow: 0 0 22px #39ff14, 0 0 40px #39ff14;
+}
 
 /* =========================================================
    SIGUIENTE NIVEL
