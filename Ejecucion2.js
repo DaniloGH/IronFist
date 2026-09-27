@@ -234,6 +234,21 @@ function JUEGOlvl2(){
 
                         setTimeout(ESPERARlvl2, 350)}//SE EJECUTARA EN UN LAPSO DE 350, DESPUES DE PRESIONAR EL BOTON
 
+
+// Función para alternar el sonido ON / OFF
+function alternarMute() {
+    var audio = document.getElementById("Fondo_Ciberpunk");
+    var btn = document.getElementById("btn-audio");
+
+    if (audio) {
+        audio.muted = !audio.muted;
+        if (btn) {
+            btn.innerHTML = audio.muted ? "🔇" : "🔊";
+        }
+    }
+}
+
+                        
 // =========================================================
 // PAUSA Y REANUDAR COMPLETO - NIVEL 2
 // =========================================================
@@ -384,3 +399,4 @@ function DETENER_JUEGOlvl2() {
         }
     }
 }
+
