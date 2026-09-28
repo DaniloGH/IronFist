@@ -565,42 +565,37 @@ html body {
    ========================================================= */
 
 #Reglas.reglas-section {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  box-sizing: border-box;
+  
+  /* Reducción de padding superior/inferior para aprovechar la pantalla */
+  padding: 20px 4% 20px !important;
+  
+  /* Mantiene scroll habilitado en pantallas pequeñas si fuera necesario */
+  overflow-y: auto;
+  overflow-x: hidden;
 
-    position: relative;
-
-    width: 100%;
-    min-height: 100vh;
-
-    box-sizing: border-box;
-
-    padding: 42px 5% 28px;
-
-    overflow: hidden;
-
-    color: var(--blanco);
-
-    background:
-
-        radial-gradient(
-            circle at 50% 40%,
-            rgba(126, 34, 206, .20),
-            transparent 35%
-        ),
-
-        radial-gradient(
-            circle at 15% 80%,
-            rgba(14, 165, 233, .10),
-            transparent 30%
-        ),
-
-        linear-gradient(
-            135deg,
-            var(--fondo-1),
-            var(--fondo-2),
-            var(--fondo-3),
-            var(--fondo-1)
-        );
-
+  color: var(--blanco);
+  background:
+    radial-gradient(
+      circle at 50% 40%,
+      rgba(126, 34, 206, .20),
+      transparent 35%
+    ),
+    radial-gradient(
+      circle at 15% 80%,
+      rgba(14, 165, 233, .10),
+      transparent 30%
+    ),
+    linear-gradient(
+      135deg,
+      var(--fondo-1),
+      var(--fondo-2),
+      var(--fondo-3),
+      var(--fondo-1)
+    );
 }
 
 
@@ -786,7 +781,7 @@ html body {
 
     text-align: center;
 
-    margin-bottom: 32px;
+    margin-bottom: 16px;
 
 }
 
@@ -4024,10 +4019,10 @@ button, input[type="button"],
 
 /* Contenedor del Switch fijado en la esquina superior derecha */
 .switch-fondo-container {
-    position: fixed; /* Mantiene la posición fija respecto a la pantalla */
-    top: 15px;      /* Distancia desde la parte superior */
-    right: 15px;    /* Distancia desde el borde derecho */
-    z-index: 99999; /* Asegura que quede por encima de todo el juego */
+    position: fixed; 
+    top: 15px;  
+    right: 15px;  
+    z-index: 99999;
     display: flex;
     align-items: center;
     gap: 10px;
@@ -4228,17 +4223,6 @@ input:checked + .slider:before {
 /* Importación de tipografía arcade retro de Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
-/* =========================================================
-   ESTILO MEJORADO PARA EL TÍTULO "Todo empezó cuando..."
-   ========================================================= */
-
-/* =========================================================
-   MEJORA DEL TÍTULO SUPERIOR (POSICIÓN Y PARPADEO)
-   ========================================================= */
-
-/* =========================================================
-   MEJORA DEL TÍTULO SUPERIOR (POSICIÓN ELEVADA Y PARPADEO)
-   ========================================================= */
 
 #Titulo_historia,
 .Titulo_historia {
@@ -4307,3 +4291,4 @@ input:checked + .slider:before {
   box-shadow: 0 0 30px rgba(0, 240, 255, 0.5) !important;
   flex-shrink: 0 !important;
 }
+
