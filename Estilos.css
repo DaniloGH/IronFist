@@ -3142,6 +3142,68 @@ html body {
 }
 
 
+/* Botón JUGAR impactante y animado */
+.Playlvl2, #Playlvl2 {
+    margin-top: 30px !important;
+    display: inline-block;
+    padding: 14px 36px;
+    font-family: 'Press Start 2P', cursive, monospace;
+    font-size: 20px;
+    font-weight: bold;
+    color: #ffffff !important;
+    background: rgba(10, 5, 25, 0.9);
+    cursor: pointer;
+    user-select: none;
+    border-radius: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    
+    /* Borde neón brillante multi-capa */
+    border: 3px solid #00f0ff !important;
+    box-shadow: 
+        0 0 10px #00f0ff,
+        0 0 20px #00f0ff,
+        0 0 30px #ff007f,
+        inset 0 0 15px rgba(0, 240, 255, 0.5) !important;
+        
+    text-shadow: 0 0 8px #00f0ff, 0 0 15px #00f0ff;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    animation: pulsoBordeNeon 1.8s infinite alternate;
+}
+
+/* Efecto al pasar el cursor (Hover) */
+.Playlvl2:hover, #Playlvl2:hover {
+    transform: scale(1.12);
+    color: #000000 !important;
+    background: #00f0ff !important;
+    border-color: #ffffff !important;
+    box-shadow: 
+        0 0 15px #00f0ff,
+        0 0 35px #ff007f,
+        0 0 50px #ff007f !important;
+    text-shadow: none;
+}
+
+/* Animación de pulso neón para el borde */
+@keyframes pulsoBordeNeon {
+    0% {
+        border-color: #00f0ff;
+        box-shadow: 
+            0 0 10px #00f0ff,
+            0 0 20px #00f0ff,
+            0 0 30px #ff007f,
+            inset 0 0 10px rgba(0, 240, 255, 0.4);
+    }
+    100% {
+        border-color: #ff007f;
+        box-shadow: 
+            0 0 15px #ff007f,
+            0 0 30px #ff007f,
+            0 0 45px #00f0ff,
+            inset 0 0 18px rgba(255, 0, 127, 0.6);
+    }
+}
+
 /* BOTON NIVEL 2 */
 
 .Playlvl2 {
@@ -3322,6 +3384,26 @@ html body {
     position: relative;
 }
 
+
+/* Insignia Flotante de Nivel (Estilo Neón Avanzado) */
+.badge-nivel {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 9999;
+    padding: 10px 18px;
+    background: rgba(10, 5, 25, 0.9);
+    border: 2px solid #00f0ff;
+    color: #00f0ff;
+    font-family: 'Press Start 2P', cursive, monospace;
+    font-size: 45px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 240, 255, 0.6), inset 0 0 10px rgba(0, 240, 255, 0.3);
+    text-shadow: 0 0 8px #00f0ff;
+    backdrop-filter: blur(4px);
+}
 
 /* TIEMPO NIVEL 2 */
 
