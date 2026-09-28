@@ -1,203 +1,174 @@
-Tiempolvl2 = 61 //VARIBLE DE INICIO TIEMPO
-Puntajelvl2 = 0 //VARIABLE DE INICIO PUNTOS
+Tiempolvl2 = 60; // Variable de inicio tiempo
+Puntajelvl2 = 0; // Variable de inicio puntos
 
+function JUEGOlvl2() {
 
-
-
-
-//CONTENEDOR QUE CONTEIENE TOO EL JUEGO
-//DE POR SI ESTA FUNCION NO SE EJECUTA HASTA QUE SE LA LLAMA, MAS ADELANTE LA LLAMAREMOS
-//PARA QUE EL JUEGO INICIE UNA VEZ SE PRESIONE JUGAR
-function JUEGOlvl2(){
-
-    function Tiempo_Disminurlvl2(){ //FUNCION QUE REDUCE EL TIEMPO Y RESETEAL EL RESULTADO UNA VEZ LLEGUE A 0
+    // 1. DISMINUCIÓN Y CONTROL DE TIEMPO
+    function Tiempo_Disminurlvl2() {
         Tiempolvl2--;
-        document.getElementById("Tiempolvl2").innerHTML = Tiempolvl2
-        if(Tiempolvl2 == 0){
-            Tiempolvl2 = 0
-            Puntajelvl2 = 61
-            alert("El tiempo se agotó, lo lamento, de seguro lo lograrás para la siguiente")} }
+        document.getElementById("Tiempolvl2").innerHTML = Tiempolvl2;
 
-    
-        Restar_Tiempolvl2 = setInterval(Tiempo_Disminurlvl2, 1000)
+        // Evaluamos si el tiempo se agotó
+        if (Tiempolvl2 <= 0) {
+            clearInterval(Restar_Tiempolvl2);
 
-        //AÑADIMOS LA FUNCION AUMENTAR PUNTOS AL PASAR EL CURSOR SOBRE LOS METIORITOS
-        document.getElementById("Meteioritolvl2").addEventListener('mouseover', Aumentar_Puntoslvl2)
-        document.getElementById("Meteiorito2lvl2").addEventListener('mouseover', Aumentar_Puntoslvl2)
-        document.getElementById("Meteiorito3lvl2").addEventListener('mouseover', Aumentar_Puntoslvl2)
+            // Si al llegar a 0 no se alcanzó la meta de 10 puntos -> Derrota
+            if (Puntajelvl2 < 10) {
+                document.getElementById("Perdiste_sound").play();
+                
+                // Detener trayectorias
+                clearInterval(Reanudar_trayectorialvl2);
+                clearInterval(Reanudar_trayectoria2lvl2);
+                clearInterval(Reanudar_trayectoria3lvl2);
 
+                alert("El tiempo se agotó. No lograste alcanzar los 10 puntos a tiempo.");
+            }
+        }
+    }
 
-        //FUNCION QUE UNICAMENTE AUMENTA PUNTOS Y RESETEA LAS VARIABLES AL LLEGAR A CIERTO LIMITE
-        function Aumentar_Puntoslvl2(){
+    Restar_Tiempolvl2 = setInterval(Tiempo_Disminurlvl2, 1000);
+
+    // EVENTOS MOUSEOVER PARA SUMAR PUNTOS
+    document.getElementById("Meteioritolvl2").addEventListener('mouseover', Aumentar_Puntoslvl2);
+    document.getElementById("Meteiorito2lvl2").addEventListener('mouseover', Aumentar_Puntoslvl2);
+    document.getElementById("Meteiorito3lvl2").addEventListener('mouseover', Aumentar_Puntoslvl2);
+
+    // 2. AUMENTO DE PUNTOS Y DETECCIÓN DE VICTORIA (MÁXIMO 10)
+    function Aumentar_Puntoslvl2() {
+        if (Puntajelvl2 < 10) {
             Puntajelvl2++;
-        document.getElementById("Puntajelvl2").innerHTML = Puntajelvl2 + " / 10";
+            document.getElementById("Puntajelvl2").innerHTML = Puntajelvl2 + " / 10";
 
-            if (Puntajelvl2 == 10) {
-                Puntajelvl2 = 0;
-                Tiempolvl2 = 61;
+            // Al llegar exactamente a 10 puntos -> Victoria inmediata
+            if (Puntajelvl2 === 10) {
+                clearInterval(Restar_Tiempolvl2);
+                document.getElementById("Fondo_Ciberpunk").pause();
+                document.getElementById("Triunfo").play();
 
-        document.getElementById("Tiempolvl2").innerHTML = 60;
-        document.getElementById("Puntajelvl2").innerHTML = "0&nbsp;/&nbsp;10";
-        document.getElementById("Fondo_Ciberpunk").pause();
-        document.getElementById("Triunfo").play();  
-                document.getElementById("NEXT").addEventListener('click', Habilitar_Siguienten_LVL)
-                function Habilitar_Siguienten_LVL(){
-                document.getElementById("NIVEL_01").style.display = "none"
-                document.getElementById("NIVEL_02").style.display = "none"
-                document.getElementById("NIVEL3").style.display = "block"}
-                            
-                function Ganaste_Pantallalvl2(){
+                // Detener movimiento e intervalos de meteoritos
+                clearInterval(Reanudar_trayectorialvl2);
+                clearTimeout(Activador_iniciallvl2);
+                clearInterval(Reanudar_trayectoria2lvl2);
+                clearTimeout(Activador_inicial2lvl2);
+                clearInterval(Reanudar_trayectoria3lvl2);
+                clearTimeout(Activador_inicial3lvl2);
 
-                    clearInterval(Reanudar_trayectorialvl2)
-                    clearTimeout(Activador_iniciallvl2)
-                    clearInterval(Reanudar_trayectoria2lvl2)
-                    clearTimeout(Activador_inicial2lvl2)
-                    clearInterval(Reanudar_trayectoria3lvl2)
-                    clearTimeout(Activador_inicial3lvl2) 
-                    clearInterval(Restar_Tiempolvl2) 
+                // Ocultar meteoritos inmediatamente para evitar bugs tras ganar
+                document.getElementById("Meteioritolvl2").style.left = "-100px";
+                document.getElementById("Meteiorito2lvl2").style.left = "-100px";
+                document.getElementById("Meteiorito3lvl2").style.left = "-100px";
 
-                    document.getElementById("Meteioritolvl2").style.left = "-70%"
-                    document.getElementById("Meteioritolvl2").style.transition = "0s"
-
-                    document.getElementById("Meteiorito2lvl2").style.left = "-70%"
-                    document.getElementById("Meteiorito2lvl2").style.transition = "0s"
-                    
-                    document.getElementById("Meteiorito3lvl2").style.left = "-70%"
-                    document.getElementById("Meteiorito3lvl2").style.transition = "0s"}
-
-                     setInterval(Ganaste_Pantallalvl2, 1)
-
-
-                document.getElementById("GanastePantallaLvL2").style.display = "flex"
+                // Pantalla y modal de victoria
+                document.getElementById("GanastePantallaLvL2").style.display = "flex";
                 Swal.fire({
-                    title : 'FELICIDADES POR SUPERAR <br> EL NIVEL <br><br> <img src="IMG/Check.png" width = "120px"><br>',
-                    html: '¿VERDAD QUE FUE DIFÍCIL?. Prepárate para el siguiente nivel que las cosas van a empeorar. Agradecemos tu dedicación en pasar este nivel, esperemos que puedas seguir defendiendo la tierra de esa manera y mejores tu habilidad de reacción ',
-                    icon: 'sucess',
+                    title: 'FELICIDADES POR SUPERAR <br> EL NIVEL <br><br> <img src="IMG/Check.png" width="120px"><br>',
+                    html: '¿VERDAD QUE FUE DIFÍCIL?. Prepárate para el siguiente nivel que las cosas van a empeorar. Agradecemos tu dedicación en pasar este nivel.',
+                    icon: 'success',
                     confirmButtonText: 'QUIERO CONTINUAR',
                     width: '50%',
                     height: '80%',
                     timer: 100000,
-                    
-                    
-                    timerProgressbar: true,
-                    /*Funcion de cerrar la alerta*/
+                    timerProgressBar: true,
                     allowOutsideClick: true,
                     allowEscapeKey: false,
-                    allowEnterkey: false,
+                    allowEnterKey: false,
                     stopKeydownPropagation: false,
-                    });
+                });
 
-                                }
-                                     }
-
-
-        //ESTA FUNCION DIRIGE AL PRIMER METIORITO 1 A LA TIERRA 
-        function Metiorito_Direccionlvl2(){
-            Distancia1lvl2 = 80
-            Altura1lvl2 = Math.round(Math.random()* 450)
-
-            document.getElementById("Meteioritolvl2").style.left = Distancia1lvl2 + "%"
-            document.getElementById("Meteioritolvl2").style.top = Altura1lvl2 + "px"}
-
-            Activador_iniciallvl2 = setTimeout(Metiorito_Direccionlvl2, 3500)//PRIMERO VA A SER EJECUTADO A LOS DOS PRIMEROS SEGUNDOS
-            Reanudar_trayectorialvl2 = setInterval(Metiorito_Direccionlvl2, 2030)//LUEGO SE VA A LLAMAR A LOS METIORITOS CADA 2,4 SEGUNDOS
-
-
-        //ESTA FUNCION DIRIGE AL PRIMER METIORITO 2 A LA TIERRA         
-        function Metiorito_Direccion2lvl2(){
-            Distancia2lvl2 = 80
-            Altura2lvl2 = Math.round(Math.random()* 450)
-
-            document.getElementById("Meteiorito2lvl2").style.left = Distancia2lvl2 + "%"
-            document.getElementById("Meteiorito2lvl2").style.top = Altura2lvl2 + "px"}
-
-            Activador_inicial2lvl2 = setTimeout(Metiorito_Direccion2lvl2, 3000)//PRIMERO VA A SER EJECUTADO A LOS DOS PRIMEROS SEGUNDOS
-            Reanudar_trayectoria2lvl2 = setInterval(Metiorito_Direccion2lvl2, 2750)//LUEGO SE VA A LLAMAR A LOS METIORITOS CADA 2,3 SEGUNDOS
-
-            //ESTA FUNCION DIRIGE AL PRIMER METIORITO 3 A LA TIERRA
-            function Metiorito_Direccion3lvl2(){
-                Distancia3lvl2 = 80
-                Altura3lvl2 = Math.round(Math.random()* 450)
-    
-                document.getElementById("Meteiorito3lvl2").style.left = Distancia3lvl2 + "%"
-                document.getElementById("Meteiorito3lvl2").style.top = Altura3lvl2 + "px"}
-    
-            Activador_inicial3lvl2  = setTimeout(Metiorito_Direccion3lvl2, 2200)//PRIMERO VA A SER EJECUTADO A LOS DOS PRIMEROS SEGUNDOS
-            Reanudar_trayectoria3lvl2 = setInterval(Metiorito_Direccion3lvl2, 2470)//LUEGO SE VA A LLAMAR A LOS METIORITOS CADA 2,3 SEGUNDOS
-       
-
-
-        //AQUI ADJUNTAMOS LA ACCION DE LA FUNCION EXPULZAR AL PASAR SOBRE EL METIORITO
-        document.getElementById("Meteioritolvl2").addEventListener('mouseover', Explulsarlvl2)
-        document.getElementById("Meteiorito2lvl2").addEventListener('mouseover', Explulsar2lvl2)
-        document.getElementById("Meteiorito3lvl2").addEventListener('mouseover', Explulsar3lvl2)
-
-        //ESTA ES LA FUNCION QUE EXPULSA AL METEORITO 1 DE MANERA ALEATORIA FUERA DEL MAPA
-        function Explulsarlvl2 (){
-            document.getElementById("Puntos_sound").play()
-            Distancialvl2 = "-500"
-            Alturalvl2 = Math.round(Math.random()* 450)
-            document.getElementById("Meteioritolvl2").style.left = Distancialvl2 + "px"
-            document.getElementById("Meteioritolvl2").style.top = Alturalvl2 + "px"
-            document.getElementById("Meteioritolvl2").style.transition = "1.8s"}
-
-
-        //ESTA ES LA FUNCION QUE EXPULSA AL METEORITO 2 DE MANERA ALEATORIA FUERA DEL MAPA
-        function Explulsar2lvl2 (){
-            document.getElementById("Punto2").play()
-            Distancialvl2 = "-500"
-            Alturalvl2 = Math.round(Math.random()* 450)
-            document.getElementById("Meteiorito2lvl2").style.left = Distancialvl2 + "px"
-            document.getElementById("Meteiorito2lvl2").style.top = Alturalvl2 + "px"
-            document.getElementById("Meteiorito2lvl2").style.transition = "1.8s"}
-
-         //ESTA ES LA FUNCION QUE EXPULSA AL METEORITO 3 DE MANERA ALEATORIA FUERA DEL MAPA
-        function Explulsar3lvl2 (){
-            document.getElementById("Punto3").play()
-            Distancialvl2 = "-500"
-            Alturalvl2 = Math.round(Math.random()* 450)
-            document.getElementById("Meteiorito3lvl2").style.left = Distancialvl2 + "px"
-            document.getElementById("Meteiorito3lvl2").style.top = Alturalvl2 + "px"
-            document.getElementById("Meteiorito3lvl2").style.transition = "1.8s"}
-
-
-
-
-        
-        //ESTA FUNCION SE ENCARGA DE ALERTARTE UNA VEZ EL METIORITO CRUZE LA LINEA CON UN PERDISTE
-        //TAMBIEN RESETEA LOS VALORES Y LLEVA A LOS METIORITOS FUERA DEL MAPA DE MANERA INSTANTANEA
-        function perdistelvl2 (){
-            if((document.getElementById("Meteioritolvl2").offsetLeft > 630) ||
-            (document.getElementById("Meteiorito2lvl2").offsetLeft > 630) ||
-            (document.getElementById("Meteiorito3lvl2").offsetLeft > 630))
-            
-            {
-                document.getElementById("Perdiste_sound").play()
-            
-                alert("YA ES DEMASIADO TARDE, LOS METEORITOS DESTRUYERON GRAN PARTE DEL CONTINENTE Y LO MEJOR ES ESPERAR LO PEOR")
-
-
-                document.getElementById("Meteioritolvl2").style.left = "-70%"
-                document.getElementById("Meteioritolvl2").style.transition = "0s"
-
-                document.getElementById("Meteiorito2lvl2").style.left = "-70%"
-                document.getElementById("Meteiorito2lvl2").style.transition = "0s"
-
-                document.getElementById("Meteiorito3lvl2").style.left = "-70%"
-                document.getElementById("Meteiorito3lvl2").style.transition = "0s"
-
-                Tiempolvl2 = 61
-                Puntajelvl2 = 0 }
-        
-            else {
-                document.getElementById("Meteioritolvl2").style.transition = "2s"
-                document.getElementById("Meteiorito2lvl2").style.transition = "2s"
-                document.getElementById("Meteiorito3lvl2").style.transition = "2s"           
-            } }
-
-        setInterval(perdistelvl2, 1)//LE COLOCAMOS UNO PARA QUE SIEMPRE SE ESTE EJECUTANDO, DADO A 
-        //QUE NO SABEMOS CUANDO EL METIORITO VA A SUPERAR EL LIMITE
+                document.getElementById("NEXT").addEventListener('click', Habilitar_Siguienten_LVL);
+                function Habilitar_Siguienten_LVL() {
+                    document.getElementById("NIVEL_01").style.display = "none";
+                    document.getElementById("NIVEL_02").style.display = "none";
+                    document.getElementById("NIVEL3").style.display = "block";
+                }
+            }
         }
+    }
+
+    // TRAYECTORIAS Y MOVIMIENTOS
+    function Metiorito_Direccionlvl2() {
+        document.getElementById("Meteioritolvl2").style.transition = "1.4s linear";
+        document.getElementById("Meteioritolvl2").style.left = "80%";
+        document.getElementById("Meteioritolvl2").style.top = Math.round(Math.random() * 450) + "px";
+    }
+    Activador_iniciallvl2 = setTimeout(Metiorito_Direccionlvl2, 3500);
+    Reanudar_trayectorialvl2 = setInterval(Metiorito_Direccionlvl2, 3830);
+
+    function Metiorito_Direccion2lvl2() {
+        document.getElementById("Meteiorito2lvl2").style.transition = "1.2s linear";
+        document.getElementById("Meteiorito2lvl2").style.left = "80%";
+        document.getElementById("Meteiorito2lvl2").style.top = Math.round(Math.random() * 450) + "px";
+    }
+    Activador_inicial2lvl2 = setTimeout(Metiorito_Direccion2lvl2, 3000);
+    Reanudar_trayectoria2lvl2 = setInterval(Metiorito_Direccion2lvl2, 4050);
+
+    function Metiorito_Direccion3lvl2() {
+        document.getElementById("Meteiorito3lvl2").style.transition = "1.9s linear";
+        document.getElementById("Meteiorito3lvl2").style.left = "80%";
+        document.getElementById("Meteiorito3lvl2").style.top = Math.round(Math.random() * 450) + "px";
+    }
+    Activador_inicial3lvl2 = setTimeout(Metiorito_Direccion3lvl2, 2200);
+    Reanudar_trayectoria3lvl2 = setInterval(Metiorito_Direccion3lvl2, 4570);
+
+    // EXPULSIÓN DE METEORITOS AL HACER MOUSEOVER
+    document.getElementById("Meteioritolvl2").addEventListener('mouseover', Explulsarlvl2);
+    document.getElementById("Meteiorito2lvl2").addEventListener('mouseover', Explulsar2lvl2);
+    document.getElementById("Meteiorito3lvl2").addEventListener('mouseover', Explulsar3lvl2);
+
+    function Explulsarlvl2() {
+        document.getElementById("Puntos_sound").play();
+        document.getElementById("Meteioritolvl2").style.transition = "1.8s";
+        document.getElementById("Meteioritolvl2").style.left = "-500px";
+    }
+
+    function Explulsar2lvl2() {
+        document.getElementById("Punto2").play();
+        document.getElementById("Meteiorito2lvl2").style.transition = "1.8s";
+        document.getElementById("Meteiorito2lvl2").style.left = "-500px";
+    }
+
+    function Explulsar3lvl2() {
+        document.getElementById("Punto3").play();
+        document.getElementById("Meteiorito3lvl2").style.transition = "1.8s";
+        document.getElementById("Meteiorito3lvl2").style.left = "-500px";
+    }
+
+    // 3. CONTROL DE CRUCE DE LÍNEA: REINICIO DE PUNTOS Y REUBICACIÓN DE METEORITOS
+    function perdistelvl2() {
+        var m1 = document.getElementById("Meteioritolvl2");
+        var m2 = document.getElementById("Meteiorito2lvl2");
+        var m3 = document.getElementById("Meteiorito3lvl2");
+
+        var p1 = m1.offsetLeft;
+        var p2 = m2.offsetLeft;
+        var p3 = m3.offsetLeft;
+
+        // Si cualquiera cruza el límite de 630px
+        if (p1 > 630 || p2 > 630 || p3 > 630) {
+            document.getElementById("Perdiste_sound").play();
+
+            // Reiniciar puntaje a 0
+            Puntajelvl2 = 0;
+            document.getElementById("Puntajelvl2").innerHTML = "0 / 10";
+
+            // Reubicar inmediatamente el meteorito que cruzó a la izquierda para evitar que se quede congelado
+            if (p1 > 630) {
+                m1.style.transition = "0s";
+                m1.style.left = "-100px";
+            }
+            if (p2 > 630) {
+                m2.style.transition = "0s";
+                m2.style.left = "-100px";
+            }
+            if (p3 > 630) {
+                m3.style.transition = "0s";
+                m3.style.left = "-100px";
+            }
+        }
+    }
+
+    setInterval(perdistelvl2, 100);
+}
 
         
         //LE DECIMOS QUE AL PRECIONAR EL BOTON JUGAR EJECUTARA LA FUNCION PLAY     
