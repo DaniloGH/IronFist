@@ -6,7 +6,6 @@ Swal.fire({
     width: '50%',
     height: '80%',
     timer: 100000,
-
     timerProgressbar: true,
     allowOutsideClick: true,
     allowEscapeKey: false,
@@ -114,73 +113,79 @@ function JUEGO() {
     Restar_Tiempo = setInterval(Tiempo_Disminur, 1000);
 
 
-// =====================================================
-// INICIALIZACIÓN Y AUMENTAR PUNTOS 
-// =====================================================
+    // =====================================================
+    // INICIALIZACIÓN Y AUMENTAR PUNTOS 
+    // =====================================================
 
-Puntaje = 0;
-document.getElementById("Puntaje").innerHTML = "0&nbsp;/&nbsp;5";
+    Puntaje = 0;
+    document.getElementById("Puntaje").innerHTML = "0&nbsp;/&nbsp;5";
 
-document.getElementById("Meteiorito").addEventListener('mouseover', Aumentar_Puntos);
-document.getElementById("Meteiorito2").addEventListener('mouseover', Aumentar_Puntos);
+    document.getElementById("Meteiorito").addEventListener('mouseover', Aumentar_Puntos);
+    document.getElementById("Meteiorito2").addEventListener('mouseover', Aumentar_Puntos);
 
-function Aumentar_Puntos() {
+    function Aumentar_Puntos() {
 
-    Puntaje++;
-    document.getElementById("Puntaje").innerHTML = Puntaje + "&nbsp;/&nbsp;5";
+        Puntaje++;
+        document.getElementById("Puntaje").innerHTML = Puntaje + "&nbsp;/&nbsp;5";
 
-    if (Puntaje == 5) {
+        if (Puntaje == 5) {
 
-        Puntaje = 0;
-        Tiempo = 71;
+            // --- BLOQUEAR BOTÓN DE PAUSA AL GANAR NIVEL 1 ---
+            var btnPausa = document.getElementById("btnPausalvl1") || document.getElementById("Pause") || document.getElementById("Pausa");
+            if (btnPausa) {
+                btnPausa.style.pointerEvents = "none";
+                btnPausa.style.opacity = "0.5";
+            }
 
-        document.getElementById("NEXT").addEventListener('click', Habilitar_Siguienten_LVL);
+            Puntaje = 0;
+            Tiempo = 71;
 
-        function Habilitar_Siguienten_LVL() {
-            document.getElementById("NIVEL_01").style.display = "none";
-            document.getElementById("NIVEL_02").style.display = "block";
+            document.getElementById("NEXT").addEventListener('click', Habilitar_Siguienten_LVL);
+
+            function Habilitar_Siguienten_LVL() {
+                document.getElementById("NIVEL_01").style.display = "none";
+                document.getElementById("NIVEL_02").style.display = "block";
+            }
+
+            document.getElementById("Tiempo").innerHTML = 70;
+
+            document.getElementById("Triunfo").play();
+            document.getElementById("Fondo_Ciberpunk").pause();
+            document.getElementById("Puntos_sound").pause();
+            document.getElementById("Punto2").pause();
+
+            document.getElementById("GANASTE_PANTALLA").style.display = "flex";
+
+            function Ganaste_Pantalla() {
+                if (typeof Reanudar_trayectoria !== 'undefined') clearInterval(Reanudar_trayectoria);
+                if (typeof Reanudar_trayectoria2 !== 'undefined') clearInterval(Reanudar_trayectoria2);
+                if (typeof Restar_Tiempo !== 'undefined') clearInterval(Restar_Tiempo);
+
+                document.getElementById("Meteiorito").style.left = "-70%";
+                document.getElementById("Meteiorito").style.transition = "0s";
+
+                document.getElementById("Meteiorito2").style.left = "-70%";
+                document.getElementById("Meteiorito2").style.transition = "0s";
+            }
+
+            Desbloquear_Pantalla = setInterval(Ganaste_Pantalla, 1);
+
+            Swal.fire({
+                title: 'FELICIDADES POR SUPERAR <br> EL NIVEL <br><br> <img src="IMG/Check.png" width="120px"><br>',
+                html: 'Al parecer nos salvamos, agradecemos tu ayuda y esfuerzo al superar este nivel, esperamos seguir contando contigo si algo más sucede.',
+                icon: 'success',
+                confirmButtonText: 'QUIERO CONTINUAR',
+                width: '50%',
+                height: '80%',
+                timer: 100000,
+                timerProgressbar: true,
+                allowOutsideClick: true,
+                allowEscapeKey: false,
+                allowEnterkey: false,
+                stopKeydownPropagation: false
+            });
         }
-
-        document.getElementById("Tiempo").innerHTML = 70;
-        document.getElementById("Puntaje").innerHTML = "0&nbsp;/&nbsp;5";
-
-        document.getElementById("Triunfo").play();
-        document.getElementById("Fondo_Ciberpunk").pause();
-        document.getElementById("Puntos_sound").pause();
-        document.getElementById("Punto2").pause();
-
-        document.getElementById("GANASTE_PANTALLA").style.display = "flex";
-
-        function Ganaste_Pantalla() {
-            if (typeof Reanudar_trayectoria !== 'undefined') clearInterval(Reanudar_trayectoria);
-            if (typeof Reanudar_trayectoria2 !== 'undefined') clearInterval(Reanudar_trayectoria2);
-            if (typeof Restar_Tiempo !== 'undefined') clearInterval(Restar_Tiempo);
-
-            document.getElementById("Meteiorito").style.left = "-70%";
-            document.getElementById("Meteiorito").style.transition = "0s";
-
-            document.getElementById("Meteiorito2").style.left = "-70%";
-            document.getElementById("Meteiorito2").style.transition = "0s";
-        }
-
-        Desbloquear_Pantalla = setInterval(Ganaste_Pantalla, 1);
-
-        Swal.fire({
-            title: 'FELICIDADES POR SUPERAR <br> EL NIVEL <br><br> <img src="IMG/Check.png" width="120px"><br>',
-            html: 'Al parecer nos salvamos, agradecemos tu ayuda y esfuerzo al superar este nivel, esperamos seguir contando contigo si algo más sucede.',
-            icon: 'success',
-            confirmButtonText: 'QUIERO CONTINUAR',
-            width: '50%',
-            height: '80%',
-            timer: 100000,
-            timerProgressbar: true,
-            allowOutsideClick: true,
-            allowEscapeKey: false,
-            allowEnterkey: false,
-            stopKeydownPropagation: false
-        });
     }
-}
 
 
     // =====================================================
@@ -417,7 +422,7 @@ function PLAY() {
 // =========================================================
 function DETENER_JUEGO() {
     // Vinculación al botón interactivo del Nivel 1
-    var btnPausa = document.getElementById("btnPausalvl1");
+    var btnPausa = document.getElementById("btnPausalvl1") || document.getElementById("Pause") || document.getElementById("Pausa");
     if (btnPausa) {
         btnPausa.addEventListener('click', PAUSE);
     }
@@ -425,7 +430,7 @@ function DETENER_JUEGO() {
     Activo = 1;
 
     function PAUSE() {
-        var btn = document.getElementById("btnPausalvl1");
+        var btn = document.getElementById("btnPausalvl1") || document.getElementById("Pause") || document.getElementById("Pausa");
         var icono = document.getElementById("iconoPausalvl1");
         var texto = document.getElementById("textoPausalvl1");
 
@@ -834,3 +839,25 @@ function Reiniciar_Juego() {
     location.reload();
 }
 
+function Graficos_fondo() {
+    var check = document.getElementById("checkFondo");
+    var fondo = document.getElementById("Fondo");
+
+    if (!fondo) return;
+
+    if (check && check.checked) {
+        // FONDO 2: Espacio Estático
+        fondo.style.background = "url(IMG/Fondo_Espacio2.jpg)";
+        fondo.style.backgroundAttachment = "fixed";
+        fondo.style.backgroundRepeat = "no-repeat";
+        fondo.style.backgroundSize = "100% 100%";
+        Graficos = 2;
+    } else {
+        // FONDO 1: Espacio Animado GIF
+        fondo.style.backgroundImage = "url(IMG/Fondo_Espacio.gif)";
+        fondo.style.backgroundAttachment = "fixed";
+        fondo.style.backgroundRepeat = "no-repeat";
+        fondo.style.backgroundSize = "100% 100%";
+        Graficos = 1;
+    }
+}

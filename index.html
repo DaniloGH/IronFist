@@ -36,7 +36,13 @@
 
 <body id="Fondo">
 
-
+<div class="switch-fondo-container">
+    <span class="switch-label">FONDO</span>
+    <label class="switch">
+        <input type="checkbox" id="checkFondo" onchange="Graficos_fondo()">
+        <span class="slider round"></span>
+    </label>
+</div>
 <!-- =========================================================
      CONTENEDOR GENERAL
      ========================================================= -->
@@ -366,32 +372,17 @@
             <!-- BOTONES HISTORIA -->
             <div class="BOTONES_2">
 
+    <div class="Boton_preparado" onclick="Mover_3()">
+        ¡INICIAR MISIÓN!
+    </div>
 
-                <div
-                    class="Boton_preparado"
-                    onclick="Mover_3()">
+    <!-- CONTROL DE NARRACIÓN -->
+    <div class="Contenedor_narracion" id="Contenedor_narracion" title="Escuchar narración">
+        <i class="fas fa-play" id="VOLUMEN"></i>
+        <i class="fas fa-pause" id="PAUSE"></i>
+    </div>
 
-                    ¿Estas preparado?
-
-                </div>
-
-
-                <!-- CONTROL DE NARRACIÓN -->
-                <div
-                    class="Contenedor_narracion"
-                    id="Contenedor_narracion">
-
-                    <i
-                        class="fas fa-play"
-                        id="VOLUMEN">
-                    </i>
-
-                    <i
-                        class="fas fa-pause"
-                        id="PAUSE">
-                    </i>
-
-                </div>
+</div>
 
 
             </div>
@@ -400,7 +391,7 @@
 
 
         <img
-            src="IMG/Metioritos_Callendo.jpg"
+            src="IMG/Asteroid-Strike-Animation.webp"
             class="Imgane_metiorito"
             id="Imagen">
 
