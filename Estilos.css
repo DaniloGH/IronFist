@@ -143,7 +143,7 @@ html body {
 
     z-index: 20;
 
-    border: 1px solid rgba(255, 255, 255, 0.45);
+    border: 1px solid rgba(255, 255, 255, 0.693);
     border-radius: 30px;
 
     background: rgba(15, 8, 25, 0.60);
@@ -217,6 +217,93 @@ html body {
         0 0 20px #d06aff,
         0 0 35px #8700ff;
 }
+.Menu_Inicio {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 2;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 12px;
+z-index: 2147483647;
+}
+
+.Menu_Inicio summary {
+    cursor: pointer;
+    padding: 10px;
+    background: #171329;
+}
+
+.Menu_Inicio nav {
+    margin-top: 5px;
+    padding: 10px;
+    background: #171329;
+}
+
+.Menu_Inicio a {
+    color: white;
+    text-decoration: none;
+}
+
+.Menu_Inicio nav label,
+.Menu_Inicio nav input,
+.Menu_Inicio nav a {
+    display: block;
+    margin: 8px 0;
+}
+
+.Menu_Inicio nav label,
+.Menu_Inicio nav a {
+    color: white;
+}
+
+#Capa_Brillo {
+    position: fixed;
+    inset: 0;
+    background: black;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 2147483646;
+    transition: opacity 0.05s linear;
+}
+
+/*creditos*/
+
+.Menu_Inicio nav button {
+    color: white;
+    background: #171329;
+    border: 1px solid white;
+    padding: 8px;
+    cursor: pointer;
+    font: inherit;
+}
+
+#VentanaCreditos {
+    max-width: 700px;
+    width: 80%;
+    padding: 30px;
+    color: white;
+    background: #171329;
+    border: 2px solid white;
+    text-align: center;
+    font-family: 'Press Start 2P', cursive;
+    line-height: 1.6;
+}
+
+#VentanaCreditos::backdrop {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+#VentanaCreditos p,
+#VentanaCreditos h4 {
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+#CerrarCreditos {
+    margin-top: 20px;
+    padding: 10px;
+    cursor: pointer;
+}
 
 
 /* =========================================================
@@ -230,13 +317,9 @@ html body {
 
     margin: 0;
 
-    font-family:
-        'Segoe UI',
-        Arial,
-        sans-serif;
+    font-family:'Press Start 2P', cursive;
 
-    font-size:
-        clamp(55px, 9vw, 130px);
+    font-size: 5vw;
 
     font-weight: 900;
 
@@ -278,6 +361,7 @@ html body {
         0 0 30px #d88cff,
         0 0 65px #9c28ff,
         0 0 120px #7000ff;
+         font-size: -5.4vw;
 }
 
 
@@ -293,12 +377,9 @@ html body {
     margin-top: 35px;
 
     font-family:
-        'Segoe UI',
-        Arial,
-        sans-serif;
+       'Press Start 2P', cursive; 
 
-    font-size:
-        clamp(20px, 2.5vw, 34px);
+    font-size: -5.3vw;
 
     font-weight: 300;
 
@@ -329,6 +410,8 @@ html body {
         0 0 10px white,
         0 0 25px #c875ff,
         0 0 45px #8b00ff;
+        font-family: 'Press Start 2P', cursive;
+        font-size: 2vw; 
 }
 
 
@@ -360,12 +443,9 @@ html body {
 
     color: white;
 
-    font-family:
-        'Segoe UI',
-        Arial,
-        sans-serif;
+    font-family: 'Press Start 2P', cursive;
 
-    font-size: 18px;
+    font-size: 35px;
 
     font-weight: 800;
 
@@ -569,6 +649,7 @@ html body {
   width: 100%;
   min-height: 100vh;
   box-sizing: border-box;
+  font-family:"Press Start 2P";
   
   /* Reducción de padding superior/inferior para aprovechar la pantalla */
   padding: 20px 4% 20px !important;
@@ -652,6 +733,8 @@ html body {
 
         background-position:
             55% 48%;
+            
+
 
     }
 
@@ -796,11 +879,10 @@ html body {
 
     display: inline-block;
 
+
     margin: 0;
 
-    font-family:
-        'Orbitron',
-        sans-serif;
+   font-family: 'Press Start 2P', cursive;
 
     font-weight: 900;
 
@@ -957,6 +1039,8 @@ html body {
 
     font-size: .55em;
 
+    font-family: 'Press Start 2P', cursive;
+
     letter-spacing: 9px;
 
     text-shadow:
@@ -973,6 +1057,7 @@ html body {
         ease-in-out
         infinite
         alternate;
+    
 
 }
 
@@ -1029,6 +1114,10 @@ html body {
 
     align-items: stretch;
 
+    #R1 {background-color: red;}
+#R2 {background-color: yellow;}
+#R3_4 {background: blue;}
+font-family: 'Press Start 2P', cursive;
 }
 
 
@@ -1087,6 +1176,7 @@ html body {
    ========================================================= */
 
 .Reglas_estilos::before {
+font-family: 'Press Start 2P', cursive;
 
     content: "";
 
@@ -1307,9 +1397,7 @@ html body {
 
     margin: 0;
 
-    font-family:
-        'Orbitron',
-        sans-serif;
+    font-family: 'Press Start 2P', cursive;
 
     font-size: 15px;
 
@@ -1362,9 +1450,7 @@ html body {
 
     margin: 0;
 
-    font-family:
-        'Rajdhani',
-        sans-serif;
+        font-family: 'Press Start 2P', cursive;
 
     font-size: 16px;
 
@@ -2162,9 +2248,7 @@ html body {
     margin:
         10px 0 0;
 
-    font-family:
-        'Rajdhani',
-        sans-serif;
+    font-family: 'Press Start 2P', cursive;
 
     font-size: 12px;
 
@@ -2490,16 +2574,12 @@ html body {
 }
 
 
-.Imgane_metiorito {
-    position: absolute;
-    top: 210px;
-    left: -100%;
-    width: 600px;
-}
-
+.Imgane_metiorito 
+   {position: absolute; top: 472px; left: -100%; width:117px;height: 119vw}
 
 .Contenedor_Historia {
     width: 40%;
+    height: 50%;
     background: rgba(255, 255, 255, 0.659);
     color: black;
     padding-top: 2%;
@@ -2509,7 +2589,7 @@ html body {
     float: right;
     position: relative;
     right: 100%;
-    top: 194px;
+    top: 199px;
 }
 
 
@@ -3372,7 +3452,7 @@ html body {
 .Cabezeralvl2 {
     height: 70px;
     border: 5px dashed rgb(0, 119, 255);
-    background: rgba(255, 255, 255, 0.363);
+    background: rgb(136, 255, 0);
     border-bottom: none;
     display: flex;
     align-items: center;
@@ -3674,7 +3754,7 @@ html body {
 .Cabezeralvl3 {
     height: 70px;
     border: 5px dashed red;
-    background: rgba(255, 255, 255, 0.363);
+    background: rgb(162, 255, 0);
     border-bottom: none;
     display: flex;
     position: relative;

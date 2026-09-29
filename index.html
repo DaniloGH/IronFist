@@ -32,9 +32,35 @@
     <title>IRON FIST</title>
 
 </head>
-
-
 <body id="Fondo">
+<!-- OPCION MENU -->
+<details class="Menu_Inicio">
+    <summary>MENÚ</summary>
+    <nav aria-label="Menú principal">
+        <a href="index.html">INICIO</a>
+
+        <label for="Brillo">BRILLO</label>
+        <input id="Brillo" type="range" min="30" max="100" value="100">
+
+        <label for="Volumen">VOLUMEN</label>
+        <input id="Volumen" type="range" min="0" max="100" value="100">
+
+        <button type="button" id="AbrirCreditos">CRÉDITOS</button>
+    </nav>
+</details>
+
+<dialog id="VentanaCreditos">
+    <div id="ContenidoCreditos"></div>
+    <button type="button" id="CerrarCreditos">CERRAR</button>
+</dialog>
+
+<!-- Capa superpuesta en la página -->
+<div id="Capa_Brillo"></div>
+  <!-- ... otros elementos ... -->
+  <label for="controlBrillo">Brillo:</label>
+  <input type="range" id="controlBrillo" min="0" max="100" value="100">
+</nav>
+
 
 <div class="switch-fondo-container">
     <span class="switch-label">FONDO</span>
@@ -390,10 +416,11 @@
         </div>
 
 
-        <img
+<img
             src="IMG/Asteroid-Strike-Animation.webp"
             class="Imgane_metiorito"
-            id="Imagen">
+            id="Imagen"
+            style="position: relative; top: 190px; width: 350px; height: 450px">
 
     </section>
 

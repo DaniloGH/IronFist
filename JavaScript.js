@@ -6,6 +6,8 @@ Swal.fire({
     width: '50%',
     height: '80%',
     timer: 100000,
+
+    
     timerProgressbar: true,
     allowOutsideClick: true,
     allowEscapeKey: false,
@@ -343,7 +345,51 @@ function JUEGO() {
     setInterval(perdiste, 1);
 }
 
+// ============================================================================
+// CONFIGURACIÓN Y CONTROLES DEL MENÚ DE OPCIONES (BRILLO, VOLUMEN, CRÉDITOS)
+// ============================================================================
 
+// 1. CONTROL DE BRILLO Y VOLUMEN
+const controlBrillo = document.getElementById("Brillo");
+const capaBrillo = document.getElementById("Capa_Brillo");
+const controlVolumen = document.getElementById("Volumen");
+
+// Cambia la opacidad de la capa superior para regular el brillo de la pantalla
+controlBrillo.addEventListener("input", function () {
+    capaBrillo.style.opacity = (0 - controlBrillo.value) / 100;
+});
+
+// Ajusta el volumen de todas las etiquetas <audio> presentes en la página
+controlVolumen.addEventListener("input", function () {
+    document.querySelectorAll("audio").forEach(function (audio) {
+        audio.volume = controlVolumen.value / 100;
+    });
+});
+
+
+// 2. CONTROL DE VENTANA MODAL DE CRÉDITOS
+const ventanaCreditos = document.getElementById("VentanaCreditos");
+const botonAbrirCreditos = document.getElementById("AbrirCreditos");
+const botonCerrarCreditos = document.getElementById("CerrarCreditos");
+
+// Función para abrir la ventana modal de créditos y cargar la información de los desarrolladores
+botonAbrirCreditos.addEventListener("click", function () {
+    document.getElementById("ContenidoCreditos").innerHTML = `
+        <h4>Desarrollado por:</h4>
+        <p>Fredy Palomino — 71727432@certus.edu.pe</p>
+        <p>David Chambilla — 71663265@certus.edu.pe</p>
+        <p>Renzo Blas — 70845813@certus.edu.pe</p>
+        <p>Brandon Montiveros — brandon@example.com</p>
+        ${document.getElementById("Proximolvl3").innerHTML}
+    `;
+
+    ventanaCreditos.showModal();
+});
+
+// Función para cerrar la ventana modal de créditos
+botonCerrarCreditos.addEventListener("click", function () {
+    ventanaCreditos.close();
+});
 // =========================================================
 // BOTÓN PLAY DEL NIVEL 1
 // =========================================================
@@ -544,6 +590,28 @@ function DETENER_JUEGO() {
         }
     }
 }
+document.addEventListener('DOMContentLoaded', () => {
+    // 1. Obtenemos los dos elementos por su ID exacto
+    const controlBrillo = document.getElementById('Brillo');
+    const capaBrillo = document.getElementById('Capa_Brillo');
+
+    // 2. Comprobamos que existan en el DOM
+    if (controlBrillo && capaBrillo) {
+        
+        // 3. Escuchamos el evento 'input' mientras arrastras la barra
+        controlBrillo.addEventListener('input', (e) => {
+            const valor = parseFloat(e.target.value); // Valor del slider (entre 30 y 100)
+            
+            // Cuando la barra está en 100, la opacidad es 0 (pantalla normal).
+            // Cuando la barra baja a 30, la opacidad sube a 0.7 (pantalla oscura).
+            const opacidad = (100 - valor) / 100;
+            
+            // Aplicamos la opacidad a la capa de fondo negro
+            capaBrillo.style.opacity = opacidad.toFixed(2);
+        });
+        
+    }
+});
 // =========================================================
 // TRANSICIONES ENTRE PANTALLAS
 // =========================================================
