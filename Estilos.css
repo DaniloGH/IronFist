@@ -2718,7 +2718,7 @@ font-family: 'Press Start 2P', cursive;
 .Cabezera {
     height: 70px;
     border: 5px dashed purple;
-    background: rgba(255, 255, 255, 0.363);
+    background: rgb(195, 254, 3);
     border-bottom: none;
     display: flex;
     align-items: center;
