@@ -18,19 +18,6 @@ html body {
 }
 
 
-body {
-    filter: hue-rotate(18deg) contrast(1.1);
-}
-
-
-button:hover, 
-.btn-juego:hover, 
-.menu-item:hover, 
-.clickable:hover {
-    filter: drop-shadow(0 0 12px #00ffff) drop-shadow(0 0 20px #ff00de);
-    transition: all 0.2s ease-in-out;
-    transform: scale(1.05);
-}
 /* =========================================================
    CONTENEDOR GENERAL
    ========================================================= */
@@ -49,7 +36,6 @@ button:hover,
    SOLO SE MODIFICA ESTA SECCION
    =========================================================
    ========================================================= */
-
 .Seccion_01 {
     width: 100%;
     height: 100vh;
@@ -65,7 +51,12 @@ button:hover,
     align-items: center;
     justify-content: center;
 
-    background: #05030a;
+    /* REEMPLAZA O AÑADE ESTO */
+    background-image: url('IMG/Fondo_de_ la_primera_seccion.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
     color: white;
 }
 
@@ -1069,7 +1060,7 @@ z-index: 2147483647;
         2s
         ease-in-out
         infinite
-        alternate;
+ss        alternate;
     
 
 }
@@ -2715,7 +2706,7 @@ font-family: 'Press Start 2P', cursive;
 .Contenedor {
     width: 900px;
     height: 500px;
-    border: 5px dashed purple;
+    border: 5px solid rgb(3, 8, 255);
     background: url(IMG/Fondo.jpg) no-repeat 50% 50%;
     background-size: cover;
     position: relative;
@@ -2730,7 +2721,7 @@ font-family: 'Press Start 2P', cursive;
 
 .Cabezera {
     height: 70px;
-    border: 5px dashed purple;
+    border: 5px solid rgb(0, 38, 255);
     background: rgb(195, 254, 3);
     border-bottom: none;
     display: flex;
@@ -3195,20 +3186,6 @@ font-family: 'Press Start 2P', cursive;
     }
 }
 
-/* EFECTO SCANLINES DE MONITORES ANTIGUOS */
-body::after {
-    content: " ";
-    display: block;
-    position: fixed;
-    top: 0; left: 0; bottom: 0; right: 0;
-    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), 
-                linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
-    z-index: 10000;
-    background-size: 100% 4px, 6px 100%;
-    pointer-events: none; /* Permite hacer clic en los botones debajo */
-}
-
-
 
 /* =========================================================
    NIVEL 2
@@ -3217,7 +3194,7 @@ body::after {
 .Contenedorlvl2 {
     width: 900px;
     height: 500px;
-    border: 5px dashed rgb(46, 86, 218);
+    border: 5px solid rgb(46, 86, 218);
     background: url(IMG/Fondo.jpg) no-repeat 50% 50%;
     background-size: cover;
     position: relative;
@@ -3478,7 +3455,7 @@ body::after {
 
 .Cabezeralvl2 {
     height: 70px;
-    border: 5px dashed rgb(0, 119, 255);
+    border: 5px solid rgb(0, 119, 255);
     background: rgb(136, 255, 0);
     border-bottom: none;
     display: flex;
@@ -3606,12 +3583,15 @@ body::after {
 .Contenedorlvl3 {
     width: 900px;
     height: 500px;
-    border: 5px dashed red;
+    border: 5px  red;
     background: url(IMG/Fondo.jpg) no-repeat 50% 50%;
     background-size: cover;
     position: relative;
     top: 4%;
     overflow: hidden;
+}
+.Cabezera {
+    
 }
 
 
@@ -3780,7 +3760,7 @@ body::after {
 
 .Cabezeralvl3 {
     height: 70px;
-    border: 5px dashed red;
+    border: 5px solid rgb(0, 72, 255)(0, 55, 255);
     background: rgb(162, 255, 0);
     border-bottom: none;
     display: flex;
