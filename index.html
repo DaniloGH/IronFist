@@ -641,7 +641,7 @@
 
 
                             <h1 class="Pollo">
-                                Dificultad: METEORITO
+                                Dificultad: Pez globo
                             </h1>
 
 
@@ -953,7 +953,8 @@
              ================================================= -->
 
         <section id="NIVEL3">
-
+            <!-- AUDIO DE ALERTA/ALARMA -->
+            <audio id="AudioAlarmaLvl3" src="alarma.mp3" preload="auto"></audio>
 
             <!-- CABEZERA NIVEL 3 -->
 
@@ -986,9 +987,9 @@
                 </div>
 
 
-                <div class="Pauselvl3" id="Pauselvl3">
-                        <h3>❚❚</h3>
-                    </div>
+                <div class="Pauselvl3">
+                    <button id="Pauselvl3" class="BtnPausa" onclick="TogglePauselv13()">PAUSA</button>
+                </div>
 
 
             </div>
@@ -1035,7 +1036,10 @@
                     width="400px"
                     class="Planetalvl3">
 
-
+                <!-- NAVE DEFENSORA DEL JUGADOR -->
+                <div id="Contenedor_Nave_Lvl3" style="position: absolute; left: 5%; top: 40%; z-index: 10;">
+                    <img src="IMG/nave.png" id="NaveJugador3" style="width: 130px; transform: rotate(0deg);">
+                </div>
 
                 <!-- LÍMITE -->
 
@@ -1076,38 +1080,14 @@
 
                     <!-- DIFICULTAD -->
 
-                    <div
-                        class="Dificultadlvl3"
-                        id="Dificultadlvl3">
-
-
-                        <img
-                            src="IMG/Megalodon.gif"
-                            width="16%">
-
-
+                    <div class="Dificultadlvl3" id="Dificultadlvl3">
+                        <img src="IMG/alien.png" width="90px">
                         &nbsp;
-
-
-                        <h1
-                            style="
-                            font-size: 27px;
-                            font-family: 'Press Start 2P', cursive;
-                            ">
-
-                            Dificultad: Megalodon
-
+                        <h1 style="font-size: 24px; font-family: 'Press Start 2P', cursive;">
+                            Dificultad: Invasión Nodriza
                         </h1>
-
-
                         &nbsp;
-
-
-                        <img
-                            src="IMG/Megalodon.gif"
-                            width="16%">
-
-
+                        <img src="IMG/alien.png" width="90px">
                     </div>
 
 
@@ -1133,13 +1113,13 @@
 
 
                     <img
-                        src="IMG/nave.gif"
+                        src="IMG/nave.png"
                         class="Ovnislvl3"
                         id="Navelvl3">
 
 
                     <img
-                        src="IMG/nave.gif"
+                        src="IMG/nave.png"
                         class="Ovnislvl3"
                         id="Nave2lvl3">
 
@@ -1154,7 +1134,7 @@
 
 
                     <img
-                        src="IMG/nodriza.gif"
+                        src="IMG/nave.png"
                         class="Ovnislvl3"
                         id="Nodrizalvl3">
 
@@ -1169,13 +1149,13 @@
 
 
                     <img
-                        src="IMG/nave.gif"
+                        src="IMG/nave.png"
                         class="Ovnislvl3"
                         id="Nave3lvl3">
 
 
                     <img
-                        src="IMG/nave.gif"
+                        src="IMG/nave.png"
                         class="Ovnislvl3"
                         id="Nave4lvl3">
 
@@ -1198,23 +1178,19 @@
                     <br>
 
                     <p>
-                        Anthony davies
+                        Fredy Palomino
                     </p>
 
                     <p>
-                        Danilo galvan
+                        David Chambilla
                     </p>
 
                     <p>
-                        Antony huamani
+                        Renzo Blas
                     </p>
 
                     <p>
-                        Diego Encenarro
-                    </p>
-
-                    <p>
-                     Alexander Gutierrez
+                        Brandon Montiveros
                     </p>
 
                 </div>

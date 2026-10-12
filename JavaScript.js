@@ -376,11 +376,10 @@ const botonCerrarCreditos = document.getElementById("CerrarCreditos");
 botonAbrirCreditos.addEventListener("click", function () {
     document.getElementById("ContenidoCreditos").innerHTML = `
         <h4>Desarrollado por:</h4>
-        <p>Anthony Davies - 61306666@certus.edu.pe</p>
-        <p>Antony Díaz - 60044669@certus.edu.pe</p>
-        <p>Diego Ecenarro - 61154710@certus.edu.pe</p>
-        <p>Danilo Galvan - 61171147@certus.edu.pe</p>
-        <p>Alexander Gutierrez - 72019692@certus.edu.pe</p>
+        <p>Fredy Palomino — 71727432@certus.edu.pe</p>
+        <p>David Chambilla — 71663265@certus.edu.pe</p>
+        <p>Renzo Blas — 70845813@certus.edu.pe</p>
+        <p>Brandon Montiveros — brandon@example.com</p>
         ${document.getElementById("Proximolvl3").innerHTML}
     `;
 
